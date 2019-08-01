@@ -1,15 +1,17 @@
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Login Ficha Colaborador</title>
-    <style>
-            body {font-family: Arial, Helvetica, sans-serif;}
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+
+  <title>Login Ficha Colaborador</title>
+  <style>
+    body {font-family: Arial, Helvetica, sans-serif;}
             form {border: 3px solid #f1f1f1;}
             
             input[type=text], input[type=password] {
@@ -52,34 +54,66 @@
             
            
             </style>
-            </head>
-            <body>
-            
-            <h2>Login</h2>
-            
-            <form action="/action_page.php">
-              <div class="imgcontainer">
-                <img src="https://www.aubay.pt/img/aubayCopy.png" alt="Avatar" class="avatar">
-              </div>
-            
-              <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-            
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-                    
-                <button type="submit">Login</button>
-                <label>
-                  <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-              </div>
-            
-             
+</head>
+
+<body>
+
+  <h2>Login</h2>
+
+  <form action="/action_page.php">
+    <div class="imgcontainer">
+      <img src="https://www.aubay.pt/img/aubayCopy.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" id="username" name="username" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="password" name="password" required>
+
+      <button type="submit" value="Login" id="submit" onclick="validate()">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+      <div>
+        <span><b class="note">Note : </b>For this demo use following username and password. <br /><b class="valid">User
+            Name : Owner<br />Password : owner123</b></span>
+      </div>
+    </div>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <script>
+      var attempt = 3; // Variable to count number of attempts.
+      // Below function Executes on click of login button.
+      function validate() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if (username == "Owner" && password == "owner123") {
+          alert("Login successfully");
+          window.location = "success.html"; // Redirecting to other page.
+          return false;
+        }
+        else {
+          attempt--;// Decrementing by one.
+          alert("You have left " + attempt + " attempt;");
+          // Disabling fields after 3 attempts.
+          if (attempt == 0) {
+            document.getElementById("username").disabled = true;
+            document.getElementById("password").disabled = true;
+            document.getElementById("submit").disabled = true;
+            return false;
+          }
+        }
+      }</script>
+</body>
+
 </html>
