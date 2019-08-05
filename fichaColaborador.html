@@ -53,6 +53,7 @@
                 }
 
                 </style>
+                
 </head>
 
 <body>
@@ -61,7 +62,7 @@
     <div class="imgcontainer">
         <img src="https://www.aubay.pt/img/aubayCopy.png" alt="Avatar" class="avatar">
     </div>
-    <form action="/action_page.php">
+    <div>
 
         <h2>Ficha de Colaborador</h2>
         <div class="container">
@@ -102,8 +103,8 @@
             <label for="ccValidity"><b>Validade CC/Passaporte</b></label>
             <input type="date" placeholder="Enter CC/Passport Validity" id="ccValidity" name="ccValidity" ><br>
 
-            <label for="countryDropDown"><b>Nacionalidade</b></label>
-            <select id="country" name="country" class="form-control">
+            <label for="nationalityDropDown"><b>Nacionalidade</b></label>
+            <select id="nationality" name="nationality" class="form-control">
                 <option value="África do Sul">África do Sul</option>
                 <option value="Albânia">Albânia</option>
                 <option value="Alemanha">Alemanha</option>
@@ -305,12 +306,12 @@
                 <br>
                 <br>
             </p>
-            <!-- yes or no question -->
+            <!-- true or no question -->
             <label for="maritalWorkStatus"><b>Cônjuge Trabalha</b></label>
             <input type="radio" placeholder="Enter Marital Work Status" id="maritalWorkStatus" name="maritalWorkStatus"
-                value="yes" >Sim
+                value="true" >Sim
             <input type="radio" placeholder="Enter Marital Work Status" id="maritalWorkStatus" name="maritalWorkStatus"
-                value="no" >Nāo
+                value="false" >Nāo
             <br>
             <br>
 
@@ -365,23 +366,23 @@
             <input type="text" placeholder="Enter Extras (Education voucher; Expenses refund) " id="extras" name="extras"
                 >
 
-            <!-- yes or no question -->
+            <!-- true or no question -->
             <label for="twelfths"><b>Duodécimos</b></label>
-            <input type="radio" id="twelfths" name="twelfths" value="yes" checked >Sim
-            <input type="radio" id="twelfths" name="twelfths" value="no" >Nāo
+            <input type="radio" id="twelfths" name="twelfths" value="true" checked >Sim
+            <input type="radio" id="twelfths" name="twelfths" value="false" >Nāo
             <br>
             <br>
 
-            <!-- yes or no question -->
+            <!-- true or no question -->
             <label for="twelfths5050"><b>Duodécimos 50%/50%/Duodécimos 1/12</b></label>
-            <input type="radio" id="twelfths5050" name="twelfths5050" value="twelfths5050" >Duodécimos 50%/50%
-            <input type="radio" id="twelfths112" name="twelfths112" value="twelfths112" >Duodécimos 1/12
+            <input type="radio" id="twelfths5050" name="twelfths5050" value="true" >Duodécimos 50%/50%
+            <input type="radio" id="twelfths112" name="twelfths112" value="false" >Duodécimos 1/12
             <br><br>
 
-            <!-- yes or no question -->
-            <label for="foodAllowence"><b>Subsidio Alimentaçāo em cartāo Alacard</b></label>
-            <input type="radio" id="foodAllowence" name="foodAllowence" value="yes" >Sim
-            <input type="radio" id="foodAllowence" name="foodAllowence" value="no" >Nāo
+            <!-- true or no question -->
+            <label for="foodAllowance"><b>Subsidio Alimentaçāo em cartāo Alacard</b></label>
+            <input type="radio" id="foodAllowance" name="foodAllowance" value="true" >Sim
+            <input type="radio" id="foodAllowance" name="foodAllowance" value="false" >Nāo
             <br><br>
             <label for="workSchedule"><b>Horário de Trabalho</b></label>
             <input type="text" placeholder="Enter workSchedule" id="workSchedule" name="workSchedule" >
@@ -389,11 +390,11 @@
 
             <h2>Lifestyle</h2>
 
-            <!-- yes or no question -->
+            <!-- true or no question -->
             <label for="sports"><b>Praticas Desporto?</b></label>
-            <input type="radio" placeholder="Do you practice any Sports?" id="sports" name="sports" value="yes"
+            <input type="radio" placeholder="Do you practice any Sports?" id="sports" name="sports" value="true"
                 >Sim
-            <input type="radio" placeholder="Do you practice any Sports?" id="sports" name="sports" value="no" >Nāo
+            <input type="radio" placeholder="Do you practice any Sports?" id="sports" name="sports" value="false" >Nāo
             <br><br>
 
             <label for="sportsType"><b>Se sim, qual?</b></label>
@@ -455,7 +456,7 @@
 
             <button type="submit" value="submit" id="submit" onclick="addEmployee()">Submit</button>
 
-    </form>
+        </div>
     </div>
     <p style="color:darkgrey; text-align: center">AUBAY PORTUGAL - Edificio Duque D'Ávila</p>
     <p style="color:darkgrey; text-align: center">Avenida Duque de Ávila 46, 7ºC - 1050-083 Lisboa</p>
@@ -464,8 +465,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
@@ -475,17 +475,17 @@
     <script>
         function addEmployee() {
             let newEmployee = new Employee($("#name").val(), $("#address").val(), $("#location").val(), $("#postalCode").val(), $("#email").val(), $("#phoneNumber").val(), $("#academicQualifications").val(),
-                $("#academicInstitution").val(), $("#course").val(), $("#cc").val(), $("#ccValidity").val(), $("#country").val(), $("#birthDate").val(), $("#nif").val(), $("#niss").val(), $("#maritalStatus").val(),
+                $("#academicInstitution").val(), $("#course").val(), $("#cc").val(), $("#ccValidity").val(), $("#nationality").val(), $("#birthDate").val(), $("#nif").val(), $("#niss").val(), $("#maritalStatus").val(),
                 $("#maritalWorkStatus").val(), $("#dependents").val(), $("#dependentsAges").val(), $("#iban").val(), $("#swift").val(), $("#professionalCategory").val(), $("#specialTech").val(), $("#otherTech").val(),
-                $("#admissionDate").val(), $("#grossSalary").val(), $("#contractType").val(), $("#extras").val(), $("#twelfths").val(), $("#twelfths5050").val(), $("#twelfths112").val(), $("#foodAllowence").val(),
+                $("#admissionDate").val(), $("#grossSalary").val(), $("#contractType").val(), $("#extras").val(), $("#twelfths").val(), $("#twelfths5050").val(), $("#twelfths112").val(), $("#foodAllowance").val(),
                 $("#workSchedule").val(), $("#sports").val(), $("#sportsType").val(), $("#otherActivities").val(), $("#suggestedActivities").val(), $("#hobbies").val(), $("#otherinterests").val(), $("#client").val(),
                 $("#clientSector").val(), $("#project").val(), $("#fare").val(), $("#healthInsurance").val(), $("#companyFinancing").val(), $("#extensible").val(), $("#insuranceRelativeName").val(),
                 $("#insuranceRelativeBirthDate").val(), $("#companyFinancingRelative").val(), $("#commentarySection").val())
             $.ajax({
-                type: "POST",
                 url: 'http://localhost:8080/projetoFichaColaborador/api/employee',
+                type: "POST",
                 data: JSON.stringify(newEmployee),
-                contentType: "application/json; charset=utf-8",
+                contentType: "application/json",
                 success: function (data) {
                     console.log(data);
                 },
@@ -493,7 +493,8 @@
                     console.log(textStatus, errorThrown);
                 }
             });
-        }</script>
+        }
+        </script>
 
 </body>
 

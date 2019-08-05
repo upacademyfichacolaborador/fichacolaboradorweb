@@ -1,8 +1,8 @@
 class Employee {
     constructor(name, address, location, postalCode, email, phoneNumber, academicQualifications, academicInstitution, course,
-        cc, ccValidity, country, birthDate, nif, niss, maritalStatus, maritalWorkStatus, dependents, dependentsAges, iban, swift,
+        cc, ccValidity, nationality, birthDate, nif, niss, maritalStatus, maritalWorkStatus, dependents, dependentsAges, iban, swift,
         professionalCategory, specialTech, otherTech, admissionDate, grossSalary, contractType, extras, twelfths, twelfths5050,
-        twelfths112, foodAllowence, workSchedule, sports, sportsType, otherActivities, suggestedActivities, hobbies, otherInterests,
+        twelfths112, foodAllowance, workSchedule, sports, sportsType, otherActivities, suggestedActivities, hobbies, otherInterests,
         client, clientSector, project, fare, healthInsurance, companyFinancing, extensible, insuranceRelativeName, insuranceRelativeBirthDate,
         companyFinancingRelative, commentarySection) {
 
@@ -17,7 +17,7 @@ class Employee {
             this.course=course;
             this.cc=cc;
             this.ccValidity=ccValidity;
-            this.country=country;
+            this.nationality=nationality;
             this.birthDate=birthDate;
             this.nif=nif;
             this.niss=niss;
@@ -37,7 +37,7 @@ class Employee {
             this.twelfths=twelfths;
             this.twelfths5050=twelfths5050;
             this.twelfths112=twelfths112;
-            this.foodAllowence=foodAllowence;
+            this.foodAllowance=foodAllowance;
             this.workSchedule=workSchedule;
             this.sports=sports;
             this.sportsType=sportsType;
@@ -91,7 +91,7 @@ class Employee {
             return this.ccValidity;
         }
         getCountry(){
-            return this.country;
+            return this.nationality;
         }
         getBirthDate(){
             return this.birthDate;
@@ -150,8 +150,8 @@ class Employee {
         getTwelfths112(){
             return this.twelfths112;
         }
-        getFoodAllowence(){
-            return this.foodAllowence;
+        getFoodAllowance(){
+            return this.foodAllowance;
         }
         getWorkSchedule(){
             return this.workSchedule;
