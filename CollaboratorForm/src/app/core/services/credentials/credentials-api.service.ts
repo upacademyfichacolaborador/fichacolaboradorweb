@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Credentials } from "../../models/credentials/Credentials";
+import { Credentials } from "../../models/credentials/credentials";
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class CredentialsApiService {
 
   private currentCredentials: Credentials = new Credentials();
-  private _loginUrl = ...;
+  private _loginUrl = "http://localhost:8080/projetoFichaColaborador/login/login";
 
 
   constructor(private http: HttpClient) { }
