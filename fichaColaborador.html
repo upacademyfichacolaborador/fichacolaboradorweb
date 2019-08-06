@@ -24,11 +24,12 @@
                 }
                 
                 button {
-                  background-color:orangered;
+                  background-color:orange;
+
                   color: white;
                   padding: 14px 20px;
                   margin: 8px 0;
-                  border: none;
+                  border:1px solid white;
                   cursor: pointer;
                   width: 100%;
                 }
@@ -53,17 +54,21 @@
                 }
 
                 </style>
+               
 
 </head>
 
 <body>
     <div>
+        
         <div class="container">
+                
             <a name="fichaColaborador"></a>
             <div id="content_a">
                 <div class="imgcontainer">
                     <img src="https://www.aubay.pt/img/aubayCopy.png" alt="Avatar" class="avatar">
                 </div>
+               
                 <h2>Ficha de Colaborador</h2>
                 <label for="name"><b>Nome</b></label>
                 <input type="text" placeholder="Enter Name" id="name" name="name" maxlength="95">
@@ -283,7 +288,8 @@
                 <input type="number" placeholder="Enter Tax Number" id="nif" name="nif" maxlength="9"><br>
 
                 <label for="niss"><b>NISS</b></label>
-                <input type="number" placeholder="Enter Social Security Number" id="niss" name="niss" maxlength="11"><br>
+                <input type="number" placeholder="Enter Social Security Number" id="niss" name="niss" maxlength="11">
+                <br><br>
 
                 <p>
                     <label for="maritalStatus"><b>Estado Civil</b></label>
@@ -337,6 +343,7 @@
                 <div class="imgcontainer">
                     <img src="https://www.aubay.pt/img/aubayCopy.png" alt="Avatar" class="avatar">
                 </div>
+                
                 <h2>Dados da Contrataçāo</h2>
 
                 <label for="professionalCategory"><b>Categoria Profissional</b></label>
@@ -384,7 +391,7 @@
             </div>
 
 
-            <a name="lifeStyle"></a>
+            <a name="lifestyle"></a>
             <div id="content_c" style="display: none;">
                 <div class="imgcontainer">
                     <img src="https://www.aubay.pt/img/aubayCopy.png" alt="Avatar" class="avatar">
@@ -462,10 +469,13 @@
 
         </div>
         <div class="container">
-            <a id="anchor_a" href="#fichaColaborador" onclick="goPage('a');" style="display: none">Ficha do Colaborador</a>
-            <a id="anchor_b" href="#dadosDeContratacao" onclick="goPage('b');">Dados de Contrataçāo</a>
-            <a id="anchor_c" href="#lifeStyle" onclick="goPage('c');">LifeStyle</a>
-            <a id="anchor_d" href="#dadosInternos" onclick="goPage('d');">Dados Internos</a>
+                <div class="btn-group" style="width:100%">
+                        
+            <button id="anchor_a" href="#fichaColaborador" onclick="goPage('a');" style="width:25%" class="active">Ficha do Colaborador</button>
+            <button id="anchor_b" href="#dadosDeContratacao" onclick="goPage('b');" style="width:25%">Dados de Contrataçāo</button>
+            <button id="anchor_c" href="#lifestyle" onclick="goPage('c');" style="width:25%">Lifestyle</button>
+            <button id="anchor_d" href="#dadosInternos" onclick="goPage('d');" style="width:25%">Dados Internos</button>
+        </div>
         </div>
     </div>
     <p style="color:darkgrey; text-align: center">AUBAY PORTUGAL - Edificio Duque D'Ávila</p>
@@ -512,10 +522,10 @@
                 cdisplay = v == 'c';
             ddisplay = v == 'd';
 
-            document.getElementById('anchor_a').style.display = adisplay ? 'none' : 'block';
-            document.getElementById('anchor_b').style.display = bdisplay ? 'none' : 'block';
-            document.getElementById('anchor_c').style.display = cdisplay ? 'none' : 'block';
-            document.getElementById('anchor_d').style.display = ddisplay ? 'none' : 'block';
+            document.getElementById('anchor_a').style.display = adisplay ;
+            document.getElementById('anchor_b').style.display = bdisplay ;
+            document.getElementById('anchor_c').style.display = cdisplay ;
+            document.getElementById('anchor_d').style.display = ddisplay ;
 
             document.getElementById('content_a').style.display = adisplay ? 'block' : 'none';
             document.getElementById('content_b').style.display = bdisplay ? 'block' : 'none';
