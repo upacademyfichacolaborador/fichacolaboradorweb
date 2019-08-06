@@ -1,0 +1,46 @@
+<html>
+<head>
+<script type="text/javascript">
+function goPage (v) {
+var adisplay = v == 'a',
+bdisplay = v == 'b',
+cdisplay = v == 'c';
+ddisplay = v == 'd';
+
+document.getElementById('anchor_a').style.display = adisplay? 'none' : 'block';
+document.getElementById('anchor_b').style.display = bdisplay? 'none' : 'block';
+document.getElementById('anchor_c').style.display = cdisplay? 'none' : 'block';
+document.getElementById('anchor_d').style.display = ddisplay? 'none' : 'block';
+
+            document.getElementById('content_a').style.display = adisplay? 'block' : 'none';
+            document.getElementById('content_b').style.display = bdisplay? 'block' : 'none';
+            document.getElementById('content_c').style.display = cdisplay? 'block' : 'none';
+            document.getElementById('content_d').style.display = ddisplay? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <a name="fichaColaborador"></a>
+    <div id="content_a">
+        Ficha do Colaborador
+    </div>
+
+    <a id="anchor_a" href="#fichaColaborador" onclick="goPage('a');" style="display: none">Ficha do Colaborador</a>
+    <a id="anchor_b" href="#dadosDeContratacao" onclick="goPage('b');">Dados de Contrataçāo</a>
+    <a id="anchor_c" href="#lifeStyle" onclick="goPage('c');">LifeStyle</a>
+    <a id="anchor_d" href="#dadosInternos" onclick="goPage('d');">Dados Internos</a>
+
+    <a name="dadosDeContratacao"></a>
+    <div id="content_b" style="display: none">
+        Dados de Contrataçāo
+    </div>
+    <a name="lifeStyle"></a>
+    <div id="content_c" style="display: none;">
+        LifeStyle
+    </div>
+    <a name="dadosInternos"></a>
+    <div id="content_d" style="display: none;">
+        Dados Internos
+    </div>
+</body>
+</html>
