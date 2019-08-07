@@ -14,6 +14,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     RouterModule
 
   ],
-  exports:[HeaderComponent]
+  exports:[HeaderComponent, SidebarComponent]
 })
 export class SharedModule { }
