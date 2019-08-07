@@ -9,13 +9,13 @@ import { HttpClient } from '@angular/common/http';
 export class CredentialsApiService {
 
   private currentCredentials: Credentials = new Credentials();
-  private _loginUrl = "http://localhost:8080/projetoFichaColaborador/login/login";
+  private _loginUrl = "http://localhost:8080/projetoFichaColaborador/api/login/login";
 
 
   constructor(private http: HttpClient) { }
 
   public isAuthenticated(): boolean {
-    if (this.currentCredentials.id) {
+    if (this.currentCredentials.username) {
       return true;
     } else {
       return false;

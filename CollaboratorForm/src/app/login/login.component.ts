@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
 
   public login() {
     this.credentialsApi.login(this.credentials).subscribe(
-      (credentials: any) => {
+      (data: any) => {
+        console.log(data);
         this.router.navigate(['/']);
       },
       (error) => {

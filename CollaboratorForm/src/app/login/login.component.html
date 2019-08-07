@@ -7,10 +7,10 @@
 
     <div class="container">
       <label for="username"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" id="username" name="username" required>
+      <input type="text" placeholder="Enter Username" id="username" [(ngModel)]="credentials.username" name="username" required>
 
       <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" id="password" name="password" required>
+      <input type="password" placeholder="Enter Password" id="password" name="password" [(ngModel)]="credentials.password"required>
 
       <button type="submit" value="Login" id="submit" (click)="login()">Login</button>
       {{msg}}
