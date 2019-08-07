@@ -23,7 +23,7 @@ export class CredentialsApiService {
   }
 
   public login(credentials: Credentials) {
-    return this.http.post<any>(this._loginUrl, credentials)
+    return this.http.post(this._loginUrl, credentials);
   }
 
   public logout() {
