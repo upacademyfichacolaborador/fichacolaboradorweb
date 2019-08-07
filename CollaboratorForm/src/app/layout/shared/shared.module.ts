@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import {HeaderComponent } from './components/header/header.component';
 import {FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, SidebarComponent],
   imports: [
     CommonModule,
     FormsModule,

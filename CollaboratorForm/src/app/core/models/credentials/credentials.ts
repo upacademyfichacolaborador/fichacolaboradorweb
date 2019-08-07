@@ -1,5 +1,6 @@
 export class Credentials {
-    // 'id'?: number;
+     'id': number;
     'username': string;
     'password': string;
+    'role': string;
 }
