@@ -137,7 +137,7 @@
             <div id="content_a">
 
 
-                <h4>Ficha de Colaborador</h4>
+                <h4>Ficha de Colaborador - Parte 1</h4>
                 <div class="row">
                     <div class="col-20">
                         <label for="name"><b>Nome</b></label>
@@ -425,6 +425,7 @@
 
             <a name="fichaColaborador(2)"></a>
             <div id="content_b" style="display: none">
+                <h4>Ficha de Colaborador - Parte 2</h4>
 
 
 
@@ -434,6 +435,7 @@
                     </div>
                     <div class="col-30">
                         <select id="maritalStatus" name="maritalStatus" class="form-control">
+                            <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
                             <option value="Solteiro(a)">Solteiro(a)</option>
                             <option value="Casado(a)">Casado(a)</option>
                             <option value="Divorciado(a)">Divorciado(a)</option>
@@ -447,6 +449,7 @@
                     </div>
                     <div class="col-30">
                         <select id="maritalWorkStatus" name="maritalWorkStatus" class="form-control">
+                            <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
                             <option value="true">Sim</option>
                             <option value="false">Não</option>
                         </select>
@@ -459,6 +462,7 @@
                     </div>
                     <div class="col-30">
                         <select id="dependents" name="dependents" class="form-control">
+                            <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -576,6 +580,7 @@
                     </div>
                     <div class="col-30">
                         <select id="twelfths" name="twelfths" class="form-control">
+                            <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
                             <option value="true">Sim</option>
                             <option value="false">Nāo</option>
                         </select>
@@ -585,6 +590,7 @@
                     </div>
                     <div class="col-30">
                         <select id="twelfths5050" name="twelfths5050" class="form-control">
+                            <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
                             <option value="yes">Sim</option>
                             <option value="no">Nāo</option>
                         </select>
@@ -596,8 +602,9 @@
                     </div>
                     <div class="col-80">
                         <select id="twelfths112" name="twelfths112" class="form-control">
-                            <option value="true">Sim</option>
-                            <option value="false">Nāo</option>
+                            <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
+                            <option value="yes">Sim</option>
+                            <option value="no">Nāo</option>
                         </select>
                     </div>
                 </div>
@@ -608,6 +615,7 @@
                     </div>
                     <div class="col-80">
                         <select id="foodAllowance" name="foodAllowance" class="form-control">
+                            <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
                             <option value="true">Sim</option>
                             <option value="false">Nāo</option>
                         </select>
@@ -628,6 +636,7 @@
                     </div>
                     <div class="col-80">
                         <select id="sports" name="sports" class="form-control">
+                            <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
                             <option value="true">Sim</option>
                             <option value="false">Nāo</option>
                         </select>
@@ -725,14 +734,22 @@
                         <label for="healthInsurance"><b>Seguro de Saúde</b></label>
                     </div>
                     <div class="col-30">
-                        <input type="text" placeholder="Health Insurance" id="healthInsurance" name="healthInsurance">
+                        <select id="healthInsurance" name="healthInsurance" class="form-control">
+                            <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
+                            <option value="yes">Sim</option>
+                            <option value="no">Nāo</option>
+                        </select>
                     </div>
 
                     <div class="col-20">
                         <label for="companyFinancing"><b>Financiado pela empresa</b></label>
                     </div>
                     <div class="col-30">
-                        <input type="text" placeholder="Company Financing" id="companyFinancing" name="companyFinancing">
+                            <select id="companyFinancing" name="companyFinancing" class="form-control">
+                                    <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
+                                    <option value="yes">Sim</option>
+                                    <option value="no">Nāo</option>
+                                </select>
                     </div>
                 </div>
 
@@ -741,7 +758,11 @@
                         <label for="extensible"><b>É extensivel?</b></label>
                     </div>
                     <div class="col-80">
-                        <input type="text" placeholder="Extensible" id="extensible" name="extensible">
+                            <select id="extensible" name="extensible" class="form-control">
+                                    <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
+                                    <option value="yes">Sim</option>
+                                    <option value="no">Nāo</option>
+                                </select>
                     </div>
                 </div>
 
@@ -770,7 +791,11 @@
                                 empresa?</b></label>
                     </div>
                     <div class="col-60">
-                        <input type="text" placeholder="Company Financing Relative" id="companyFinancingRelative" name="companyFinancingRelative">
+                            <select id="companyFinancingRelative" name="companyFinancingRelative" class="form-control">
+                                    <option label="--escolha uma opçāo--">--escolha uma opçāo--</option>
+                                    <option value="yes">Sim</option>
+                                    <option value="no">Nāo</option>
+                            </select>
                     </div>
                 </div>
 
