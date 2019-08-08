@@ -3,4 +3,7 @@ export class Credentials {
     'username': string;
     'password': string;
     'role': string;
+    constructor(data?: any) {
+        Object.assign(this, data);
+    }
 }

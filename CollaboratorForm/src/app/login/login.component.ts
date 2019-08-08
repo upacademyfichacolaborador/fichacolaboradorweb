@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       (data: any) => {
         console.log(this.credentials);
         console.log(data);
-        this.credentialsApi.serCurrentCredentials(data);
+        this.credentialsApi.setCurrentCredentials(data);
         this.router.navigate(['/']);
       },
       (error) => {

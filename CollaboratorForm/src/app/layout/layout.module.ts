@@ -6,9 +6,12 @@ import { SharedModule } from './shared/shared.module';
 import {FormsModule } from '@angular/forms'
 import { LayoutComponent } from './layout.component';
 
+import { EmployeeComponent } from './employee/employee.component';
+
+
 
 @NgModule({
-  declarations: [LayoutComponent],
+  declarations: [LayoutComponent, EmployeeComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule,

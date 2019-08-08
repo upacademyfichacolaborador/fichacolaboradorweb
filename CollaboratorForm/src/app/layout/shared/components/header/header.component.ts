@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CredentialsApiService } from 'src/app/core/services/credentials/credentials-api.service';
+import { DataService } from 'src/app/core/services/data/data.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private credentialsApi: CredentialsApiService
+    private credentialsApi: CredentialsApiService,
+    private employeeApi: DataService
   ) { }
 
   ngOnInit() {
@@ -21,5 +23,9 @@ export class HeaderComponent implements OnInit {
   public logout() {
     this.credentialsApi.logout();
     this.router.navigate(['/login']);
+  }
+
+  public getAllEmployees() {
+this.employeeApi.getAllEmployees();
   }
 }

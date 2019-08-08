@@ -22,7 +22,7 @@ export class CredentialsApiService {
     }
   }
 
-  public serCurrentCredentials(currentCredentials: any){
+  public setCurrentCredentials(currentCredentials: any){
     return this._currentCredentials = currentCredentials;
   }
   public login(credentials: Credentials) {
