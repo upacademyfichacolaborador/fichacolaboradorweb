@@ -5,7 +5,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { SharedModule } from './shared/shared.module';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { LayoutComponent } from './layout.component';
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { EmployeeComponent } from './employee/employee.component';
 
 
@@ -17,7 +17,8 @@ import { EmployeeComponent } from './employee/employee.component';
     LayoutRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDatatableModule
   ]
 })
 export class LayoutModule { }

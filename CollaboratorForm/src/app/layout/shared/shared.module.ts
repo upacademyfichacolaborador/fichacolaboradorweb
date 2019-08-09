@@ -4,12 +4,13 @@ import {HeaderComponent } from './components/header/header.component';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { TablesComponent } from './components/tables/tables.component';
+
+
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, SidebarComponent, TablesComponent ],
+  declarations: [HeaderComponent, SidebarComponent ],
   imports: [
     CommonModule,
     FormsModule,
@@ -17,6 +18,6 @@ import { TablesComponent } from './components/tables/tables.component';
     ReactiveFormsModule
 
   ],
-  exports:[HeaderComponent, SidebarComponent,TablesComponent]
+  exports:[HeaderComponent, SidebarComponent]
 })
 export class SharedModule { }
