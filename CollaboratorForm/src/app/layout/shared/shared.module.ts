@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HeaderComponent } from './components/header/header.component';
-import {FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TablesComponent } from './components/tables/tables.component';
@@ -13,7 +13,8 @@ import { TablesComponent } from './components/tables/tables.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
 
   ],
   exports:[HeaderComponent, SidebarComponent,TablesComponent]
