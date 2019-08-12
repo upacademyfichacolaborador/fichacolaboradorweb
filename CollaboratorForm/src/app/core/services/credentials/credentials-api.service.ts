@@ -22,6 +22,14 @@ export class CredentialsApiService {
     }
   }
 
+public isOwner(): boolean {
+  if (this._currentCredentials.role = "owner") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
   public setCurrentCredentials(currentCredentials: any){
     return this._currentCredentials = currentCredentials;
   }
@@ -31,5 +39,8 @@ export class CredentialsApiService {
 
   public logout() {
     this._currentCredentials = null;
+  }
+  public getCurrentName(): string {
+    return this._currentCredentials.username
   }
 }

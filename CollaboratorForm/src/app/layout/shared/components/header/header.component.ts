@@ -10,12 +10,15 @@ import { DataService } from 'src/app/core/services/data/data.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  public name: string;
   constructor(
+
     private router: Router,
     private credentialsApi: CredentialsApiService,
     private employeeApi: DataService
-  ) { }
+  ) {
+    this.name = credentialsApi.getCurrentName();
+  }
 
   ngOnInit() {
   }
@@ -26,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public getAllEmployees() {
-this.employeeApi.getAllEmployees();
-this.employeeApi.getAllUsers();
+    this.employeeApi.getAllEmployees();
+    this.employeeApi.getAllUsers();
   }
 }

@@ -21,4 +21,8 @@
     width: 15rem;
   }
 
-  
+  .list-group-item.active {
+    z-index: 2;
+    color: rgb(3, 3, 3);
+    border-color: orangered;
+}
