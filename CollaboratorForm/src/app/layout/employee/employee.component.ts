@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild} from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Employee } from 'src/app/core/models/employee/employee';
 import { DataService } from 'src/app/core/services/data/data.service';
-import { Page } from 'src/app/core/models/page/page';
+
 
 
 @Component({
@@ -18,7 +18,7 @@ rows = [];
 temp = [];
 columns = [{ prop: 'name' }, { name: 'admissionDate' }];
 //@ViewChild(EmployeeComponent, { static: false }) table: EmployeeComponent;
-page = new Page();
+
 
 
 constructor(
@@ -30,25 +30,17 @@ constructor(
         this.temp = res;
         this.rows = this.temp;
       }
-    );
-      this.page.pageNumber = 0;
-      this.page.size = 20;
+    );   
   }
-
-
-  
-    
 
   ngOnInit() {
-    this.setPage({ offset: 0 });
+    
   }
-
 
   getAllEmployees() {
     this.dataService.getAllEmployees();
   }
 
-  
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
 
@@ -64,11 +56,5 @@ constructor(
   }
     
   
-  setPage(pageInfo){
-    this.page.pageNumber = pageInfo.offset;
-    this.serverResultsService.getResults(this.page).subscribe(pagedData => {
-      this.page = pagedData.page;
-      this.rows = pagedData.data;
-    });
-  }
+ 
 }

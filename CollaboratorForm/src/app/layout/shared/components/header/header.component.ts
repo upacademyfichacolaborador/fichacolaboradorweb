@@ -27,5 +27,6 @@ export class HeaderComponent implements OnInit {
 
   public getAllEmployees() {
 this.employeeApi.getAllEmployees();
+this.employeeApi.getAllUsers();
   }
 }

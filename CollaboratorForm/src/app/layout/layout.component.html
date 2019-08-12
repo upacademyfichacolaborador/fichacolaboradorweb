@@ -1,9 +1,8 @@
-<div class="container">
-    <app-header></app-header>
-</div>
-<br>
-<br>
-<br>
-<div class="container">
-  <app-employee></app-employee>
+<div class="container d-flex" id="wrapper">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <!-- Page Content -->
+  <div id="page-content-wrapper" style="margin-top: 80px">
+    <router-outlet></router-outlet>
+  </div>
 </div>
