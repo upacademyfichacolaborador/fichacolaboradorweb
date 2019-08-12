@@ -1,1 +1,285 @@
-<p>form works!</p>
+<div class="container">
+
+    <form [formGroup]="employeesForm" (ngSubmit)="onSubmit()">
+        <h3>Employees</h3>
+
+        <label>
+            Nome:
+            <input id="name" type="text" formControlName="name"  required>
+        </label>
+        <div *ngIf="employeesForm.controls['name'].invalid && clickSubmit" class="alert alert-danger">
+            <div *ngIf="employeesForm.controls['name'].errors.required">
+                Name is required.
+            </div>
+        </div>
+
+        <label>
+            Email:
+            <input id="email" type="email" class="form-control" formControlName="email">
+        </label>
+        <div *ngIf="employeesForm.controls['email'].invalid && clickSubmit" class="alert alert-danger">
+                <div *ngIf="employeesForm.controls['email'].errors.required">
+                    {{employeesForm.controls['email'].errors |json}}
+                </div>
+            </div>
+
+        <label>
+            Telefone:
+            <input id="phoneNumber" type="tel" formControlName="phoneNumber">
+        </label>
+        <div *ngIf="employeesForm.controls['phoneNumber'].invalid && clickSubmit" class="alert alert-danger">
+                <div *ngIf="employeesForm.controls['phoneNumber'].errors.required">
+                    Phone Number is required.
+                </div>
+            </div>
+    
+        
+
+        <label>
+            Codigo Postal:
+            <input id="postalCode" type="number" formControlName="postalCode">
+        </label>
+
+        <label>
+            Morada:
+            <input type="text" formControlName="address">
+        </label>
+
+        <label>
+            Localidade:
+            <input type="text" formControlName="location">
+        </label>
+
+        <label>
+            Habilitações Literárias:
+            <input type="text" formControlName="academicQualifications">
+        </label>
+
+        <label>
+            Instituto:
+            <input type="text" formControlName="academicInstitution">
+        </label>
+
+        <label>
+            Curso:
+            <input type="text" formControlName="course">
+        </label>
+
+        <label>
+            Nacionalidade:
+            <input type="text" formControlName="nationality">
+        </label>
+
+        <label>
+            CC/Passaporte:
+            <input type="text" formControlName="cc">
+        </label>
+
+        <label>
+            Validade CC/Passaporte:
+            <input type="date" formControlName="ccValidity">
+        </label>
+
+        <label>
+            Data de Nascimento:
+            <input type="date" formControlName="birthDate">
+        </label>
+
+        <label>
+            NIF:
+            <input type="number" formControlName="nif">
+        </label>
+
+        <label>
+            NISS:
+            <input type="number" formControlName="niss">
+        </label>
+
+        <label>
+            Estado Civil:
+            <input type="text" formControlName="maritalStatus">
+        </label>
+
+        <label>
+            Conjuge Trabalha:
+            <input type="text" formControlName="maritalWorkStatus">
+        </label>
+
+        <label>
+            Dependentes:
+            <input type="text" formControlName="dependents">
+        </label>
+
+        <label>
+            Idade dos dependentes:
+            <input type="text" formControlName="dependentsAges">
+        </label>
+
+        <label>
+            IBAN:
+            <input type="number" formControlName="iban">
+        </label>
+
+        <label>
+            SWIFT:
+            <input type="number" formControlName="swift">
+        </label>
+
+        <label>
+            Categoria Profissional:
+            <input type="text" formControlName="professionalCategory">
+        </label>
+
+        <label>
+            Tecnologia Especial:
+            <input type="text" formControlName="specialTech">
+        </label>
+
+        <label>
+            Outras Tecnologias:
+            <input type="text" formControlName="otherTech">
+        </label>
+
+        <label>
+            Data de Admissao:
+            <input type="date" formControlName="admissionDate">
+        </label>
+
+        <label>
+            Salario Bruto:
+            <input type="number" formControlName="grossSalary">
+        </label>
+
+        <label>
+            Tipo de Contrato:
+            <input type="text" formControlName="contractType">
+        </label>
+
+        <label>
+            Bonus:
+            <input type="text" formControlName="bonus">
+        </label>
+
+        <label>
+            Duodecimos:
+            <input type="text" formControlName="twelfths">
+        </label>
+
+        <label>
+            Duodecimos5050:
+            <input type="text" formControlName="twelfths5050">
+        </label>
+
+        <label>
+            Duodecimos112:
+            <input type="text" formControlName="twelfths112">
+        </label>
+
+        <label>
+            Subsidio Alimentaçāo em cartāo Alacard:
+            <input type="text" formControlName="foodAllowence">
+        </label>
+
+        <label>
+            Horario de trabalho:
+            <input type="text" formControlName="workSchedule">
+        </label>
+
+        <label>
+            Praticas Desporto?:
+            <input type="text" formControlName="sports">
+        </label>
+
+        <label>
+            Se sim, qual?:
+            <input type="text" formControlName="sportsType">
+        </label>
+
+        <label>
+            Outras atividades praticas regularmente?
+            <input type="text" formControlName="otherActivities">
+        </label>
+
+        <label>
+            Que atividades gostarias que a Aubay te
+            oferecesse?
+            <input type="text" formControlName="suggestedAcivities">
+        </label>
+
+        <label>
+            Passatempos:
+            <input type="text" formControlName="hobbies">
+        </label>
+
+        <label>
+            Outras áreas de interesse:
+            <input type="text" formControlName="otherInterests">
+        </label>
+
+        <label>
+            Cliente:
+            <input type="text" formControlName="client">
+        </label>
+
+        <label>
+            Setor:
+            <input type="text" formControlName="clientSector">
+        </label>
+
+        <label>
+            Projeto:
+            <input type="text" formControlName="project">
+        </label>
+
+        <label>
+            Tarifa:
+            <input type="text" formControlName="fare">
+        </label>
+
+        <label>
+            Observacoes:
+            <input type="text" formControlName="commentarySection">
+        </label>
+
+        <label>
+            Seguro de saude:
+            <input type="text" formControlName="healthInsurance">
+        </label>
+
+        <label>
+            Financiado pela Aubay:
+            <input type="text" formControlName="companyFinancing">
+        </label>
+
+        <label>
+            Extensivel:
+            <input type="text" formControlName="extensible">
+        </label>
+
+        <label>
+            O seguro do familiar é financiado pela empresa?:
+            <input type="text" formControlName="companyFinancingRelative">
+        </label>
+
+        <label>
+            Nome do familiar:
+            <input type="text" formControlName="insuranceRelativeName">
+        </label>
+
+        <label>
+            Data de Nascimento dos familiares:
+            <input type="text" formControlName="insuranceRelativeBirthDate">
+        </label>
+
+        <button type="submit" >Submit</button>
+
+
+
+
+    </form>
+
+
+
+
+
+</div>

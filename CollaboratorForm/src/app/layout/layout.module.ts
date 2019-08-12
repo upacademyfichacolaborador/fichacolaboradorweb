@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { SharedModule } from './shared/shared.module';
-import {FormsModule } from '@angular/forms'
+import {FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { LayoutComponent } from './layout.component';
 import { FormComponent } from './form/form.component';
 
@@ -14,7 +14,8 @@ import { FormComponent } from './form/form.component';
     CommonModule,
     LayoutRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class LayoutModule { }
