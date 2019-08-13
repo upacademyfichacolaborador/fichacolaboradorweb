@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmployeeApiService {
   private _apiUrl = "http://localhost:8080/projetoFichaColaborador/api/employee";
-  private _apiUrl2 = "http://localhost:8080/projetoFichaColaborador/api/token/generateToken/";
+  private _apiUrl2 = "http://localhost:8080/projetoFichaColaborador/api/token/checkTokenGenerator/";
 
   constructor(private http: HttpClient) { }
 
@@ -15,6 +15,7 @@ export class EmployeeApiService {
   }
 
   public sendEmail(email: string){
+    console.log(this._apiUrl2 + email);
     return this.http.get(this._apiUrl2 + email);
   }
 }

@@ -17,6 +17,7 @@ export class EmployeeNewComponent implements OnInit {
   }
 
   triggerEvent() {
+    console.log("entrei" ,this.email)
     this.employeeApiService.sendEmail(this.email);
   }
 }
