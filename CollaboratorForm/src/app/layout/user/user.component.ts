@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { User } from 'src/app/core/models/user/user';
 import { Observable, Subscription } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
+import { UserNewComponent } from './user-new/user-new.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user',
@@ -15,12 +18,14 @@ private subcriptionData : Subscription;
 rows = [];
 temp = [];
 columns = [{ prop: 'username' }, { name: 'role' }];
-
+public modalRef: BsModalRef;
+public iconNew = faPlus;
 
 
 
 constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private modalService: BsModalService
   ) { 
     this.users$ = this.dataService.users$;
     this.subcriptionData = this.users$.subscribe(
@@ -52,5 +57,7 @@ constructor(
     // Whenever the filter changes, always go back to the first page
    
   }
-    
+  public openCreateModal(template:TemplateRef<any>) {
+    this.modalRef = this.modalService.show(UserNewComponent);
+  }
 }

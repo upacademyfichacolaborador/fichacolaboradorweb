@@ -13,4 +13,8 @@ export class UserApiService {
     return this.http.get(this._apiUrl);
   }
 
+  public createUser(user){
+    return this.http.post(this._apiUrl,user);
+  }
+
 }
