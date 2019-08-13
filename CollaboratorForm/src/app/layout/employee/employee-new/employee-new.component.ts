@@ -8,7 +8,7 @@ import { BsModalRef } from 'ngx-bootstrap';
   styleUrls: ['./employee-new.component.scss']
 })
 export class EmployeeNewComponent implements OnInit {
-  email="";
+  public email: string;
   constructor(private employeeApiService : EmployeeApiService, private modalRef:BsModalRef ) { 
     
   }
