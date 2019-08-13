@@ -8,7 +8,7 @@ import { BsModalRef } from 'ngx-bootstrap';
   styleUrls: ['./employee-new.component.scss']
 })
 export class EmployeeNewComponent implements OnInit {
-  public email: string;
+  email="";
   constructor(private employeeApiService : EmployeeApiService, private modalRef:BsModalRef ) { 
     
   }
@@ -18,6 +18,6 @@ export class EmployeeNewComponent implements OnInit {
 
   triggerEvent() {
     console.log("entrei" ,this.email)
-    this.employeeApiService.sendEmail(this.email);
+    this.employeeApiService.sendEmail(this.email).subscribe();
   }
 }

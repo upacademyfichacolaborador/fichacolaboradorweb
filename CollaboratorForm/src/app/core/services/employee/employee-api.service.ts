@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EmployeeApiService {
-  private _apiUrl = "http://localhost:8080/projetoFichaColaborador/api/employee";
-  private _apiUrl2 = "http://localhost:8080/projetoFichaColaborador/api/token/checkTokenGenerator/";
+  private _apiUrl = "http://localhost:8080/projetoFichaColaborador/api/employees";
+  private _apiUrl2 = "http://localhost:8080/projetoFichaColaborador/api/token/generateToken/";
 
   constructor(private http: HttpClient) { }
 
