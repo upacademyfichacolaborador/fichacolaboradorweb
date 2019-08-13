@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private credentialsApi: CredentialsApiService
   ) {
-    
+    this.credentials.username ='superadmin';
+    this.credentials.password ='superadmin';
   }
 
   ngOnInit() { }

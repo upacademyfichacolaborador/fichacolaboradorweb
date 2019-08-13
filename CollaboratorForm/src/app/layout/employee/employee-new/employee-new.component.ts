@@ -1,0 +1,22 @@
+import { Component, OnInit } from '@angular/core';
+import { EmployeeApiService } from 'src/app/core/services/employee/employee-api.service';
+import { BsModalRef } from 'ngx-bootstrap';
+
+@Component({
+  selector: 'app-employee-new',
+  templateUrl: './employee-new.component.html',
+  styleUrls: ['./employee-new.component.scss']
+})
+export class EmployeeNewComponent implements OnInit {
+  email="";
+  constructor(private employeeApiService : EmployeeApiService, private modalRef:BsModalRef ) { 
+    
+  }
+
+  ngOnInit() {
+  }
+
+  triggerEvent() {
+    this.employeeApiService.sendEmail(this.email);
+  }
+}
