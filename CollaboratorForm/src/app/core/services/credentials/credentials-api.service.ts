@@ -23,7 +23,7 @@ export class CredentialsApiService {
   }
 
 public isOwner(): boolean {
-  if (this._currentCredentials.role = "owner") {
+  if (this._currentCredentials.role == "owner") {
     return true;
   } else {
     return false;
