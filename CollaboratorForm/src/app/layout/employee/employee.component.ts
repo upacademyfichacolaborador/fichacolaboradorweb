@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef} from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Employee } from 'src/app/core/models/employee/employee';
 import { DataService } from 'src/app/core/services/data/data.service';
-
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { EmployeeNewComponent } from './employee-new/employee-new.component';
 
 
 @Component({
@@ -17,12 +19,14 @@ private subcriptionData : Subscription;
 rows = [];
 temp = [];
 columns = [{ prop: 'name' }, { name: 'admissionDate' }];
-//@ViewChild(EmployeeComponent, { static: false }) table: EmployeeComponent;
+public modalRef: BsModalRef;
+public iconNew = faPlus;
 
 
 
 constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private modalService: BsModalService
   ) { 
     this.employees$ = this.dataService.employees$;
     this.subcriptionData = this.employees$.subscribe(
@@ -55,6 +59,10 @@ constructor(
     //this.table.offset = 0;
   }
     
-  
+  public openInviteModal(template:TemplateRef<any>) {
+    this.modalRef = this.modalService.show(EmployeeNewComponent);
+    // this.modalRef.content.event;
+    // this.modalRef.hide();
+  }
  
 }
