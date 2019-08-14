@@ -4,7 +4,9 @@ import { Observable, Subscription } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { UserNewComponent } from './user-new/user-new.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrash, faUserEdit, faInfo } from '@fortawesome/free-solid-svg-icons';
+import { UserApiService } from 'src/app/core/services/user/user-api.service';
+import { UserDeleteComponent } from './user-delete/user-delete.component';
 
 @Component({
   selector: 'app-user',
@@ -20,12 +22,16 @@ temp = [];
 columns = [{ prop: 'username' }, { name: 'role' }];
 public modalRef: BsModalRef;
 public iconNew = faPlus;
+public iconTrash = faTrash;
+public iconInfo = faInfo;
+public iconEdit = faUserEdit;
 
 
 
 constructor(
     private dataService: DataService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private userApi: UserApiService
   ) { 
     this.users$ = this.dataService.users$;
     this.subcriptionData = this.users$.subscribe(
@@ -59,5 +65,40 @@ constructor(
   }
   public openCreateModal(template:TemplateRef<any>) {
     this.modalRef = this.modalService.show(UserNewComponent);
+  }
+
+  public openDeleteModal(id) {
+    console.log(id)
+    this.modalRef = this.modalService.show(UserDeleteComponent);
+  }
+
+  // public delete(id) {
+  //   console.log(id)
+  //   this.userApi.delete(id).subscribe(
+      
+  //     () => {
+  //       this.dataService.getAllEmployees();
+  //     }
+  //   );
+  // }
+
+  public get(id) {
+    console.log(id)
+    this.userApi.get(id).subscribe(
+      
+      () => {
+        this.dataService.getAllEmployees();
+      }
+    );
+  }
+
+  public edit(id) {
+    console.log(id)
+    this.userApi.edit(id).subscribe(
+      
+      () => {
+        this.dataService.getAllEmployees();
+      }
+    );
   }
 }

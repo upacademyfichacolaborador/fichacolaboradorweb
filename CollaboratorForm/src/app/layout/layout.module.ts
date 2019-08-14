@@ -12,12 +12,13 @@ import { EmployeeNewComponent } from './employee/employee-new/employee-new.compo
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModalModule } from 'ngx-bootstrap';
 import { UserNewComponent } from './user/user-new/user-new.component';
+import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 
 
 
 
 @NgModule({
-  declarations: [LayoutComponent, EmployeeComponent, UserComponent, EmployeeNewComponent, UserNewComponent],
+  declarations: [LayoutComponent, EmployeeComponent, UserComponent, EmployeeNewComponent, UserNewComponent, UserDeleteComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule,
@@ -27,6 +28,6 @@ import { UserNewComponent } from './user/user-new/user-new.component';
     ModalModule.forRoot(),
     NgxDatatableModule
   ],
-  entryComponents:[EmployeeNewComponent,UserNewComponent]
+  entryComponents:[EmployeeNewComponent,UserNewComponent, UserDeleteComponent]
 })
 export class LayoutModule { }
