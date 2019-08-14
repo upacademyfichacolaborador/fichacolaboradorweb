@@ -20,8 +20,13 @@
           [rows]="rows"
           [limit]="10"
           [sorts]="[{prop: 'name', dir: 'desc'}]"
+          [selected]="selected"
+          [selectionType]="'checkbox'"
+          (select)='onSelect($event)'
         >
-
+        <ngx-datatable-column name = "" [width]="30" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false" [headerCheckboxable] = "true"
+        [checkboxable] = "true">
+      </ngx-datatable-column>
         <ngx-datatable-column name="Name">
           <ng-template let-row="row" ngx-datatable-cell-template>
             {{row.name}}

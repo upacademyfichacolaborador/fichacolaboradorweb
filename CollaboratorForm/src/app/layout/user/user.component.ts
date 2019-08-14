@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, OnDestroy } from '@angular/core';
 import { User } from 'src/app/core/models/user/user';
 import { Observable, Subscription } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
@@ -13,13 +13,14 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, 
+OnDestroy {
 
 public users$: Observable<User[]>;
-private subcriptionData : Subscription;
+private subscriptionData : Subscription;
 rows = [];
 temp = [];
-columns = [{ prop: 'username' }, { name: 'role' }];
+selected = [];
 public modalRef: BsModalRef;
 public iconNew = faPlus;
 public iconTrash = faTrash;
@@ -34,7 +35,7 @@ constructor(
     private userApi: UserApiService
   ) { 
     this.users$ = this.dataService.users$;
-    this.subcriptionData = this.users$.subscribe(
+    this.subscriptionData = this.users$.subscribe(
       (res) => {
         this.temp = res;
         this.rows = this.temp;
@@ -45,7 +46,9 @@ constructor(
   ngOnInit() {
     
   }
-
+  ngOnDestroy() {
+    this.subscriptionData.unsubscribe();
+  }
   getAllUsers() {
     this.dataService.getAllUsers();
   }
@@ -102,5 +105,9 @@ constructor(
         this.dataService.getAllUsers();
       }
     );
+  }
+
+  onSelect(row){
+    console.log(row)
   }
 }

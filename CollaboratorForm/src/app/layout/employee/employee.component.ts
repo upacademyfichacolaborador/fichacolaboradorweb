@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Employee } from 'src/app/core/models/employee/employee';
 import { DataService } from 'src/app/core/services/data/data.service';
@@ -15,12 +15,13 @@ import { EmployeeDeleteComponent } from './employee-delete/employee-delete.compo
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.scss']
 })
-export class EmployeeComponent implements OnInit {
+export class EmployeeComponent implements OnInit, OnDestroy {
 public employees$: Observable<Employee[]>;
-private subcriptionData : Subscription;
+private subscriptionData : Subscription;
 rows = [];
 temp = [];
-columns = [{ prop: 'name' }, { name: 'admissionDate' }];
+selected = [];
+// columns = [{ prop: 'name' }, { name: 'admissionDate' }];
 public modalRef: BsModalRef;
 public iconNew = faPlus;
 public iconTrash = faTrash;
@@ -34,7 +35,7 @@ constructor(
     private employeeApi: EmployeeApiService
   ) { 
     this.employees$ = this.dataService.employees$;
-    this.subcriptionData = this.employees$.subscribe(
+    this.subscriptionData = this.employees$.subscribe(
       (res) => {
         this.temp = res;
         this.rows = this.temp;
@@ -45,6 +46,10 @@ constructor(
 
   ngOnInit() {
     
+  }
+
+  ngOnDestroy() {
+    this.subscriptionData.unsubscribe();
   }
 
   getAllEmployees() {
@@ -105,4 +110,7 @@ constructor(
     );
   }
 
+  onSelect(row){
+    console.log(row)
+  }
 }
