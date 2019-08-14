@@ -13,8 +13,7 @@ export class HeaderComponent implements OnInit {
   constructor(
 
     private router: Router,
-    private credentialsApi: CredentialsApiService,
-    private employeeApi: DataService
+    private credentialsApi: CredentialsApiService
   ) {
     this.name = credentialsApi.getCurrentName();
   }
@@ -27,18 +26,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  public getAllEmployees() {
-    this.employeeApi.getAllEmployees();
-    this.employeeApi.getAllUsers();
-  }
+  
 
-  onHidden(): void {
-    console.log('Dropdown is hidden');
-  }
-  onShown(): void {
-    console.log('Dropdown is shown');
-  }
-  isOpenChange(): void {
-    console.log('Dropdown state is changed');
-  }
 }

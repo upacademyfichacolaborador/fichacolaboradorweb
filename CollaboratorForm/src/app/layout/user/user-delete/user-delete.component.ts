@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserApiService } from 'src/app/core/services/user/user-api.service';
 import { BsModalRef } from 'ngx-bootstrap';
+import { DataService } from 'src/app/core/services/data/data.service';
 
 
 @Component({
@@ -11,14 +12,20 @@ import { BsModalRef } from 'ngx-bootstrap';
 export class UserDeleteComponent implements OnInit {
   public userToDelete: number;
   constructor(private userApiService: UserApiService,
-    private modalRef: BsModalRef) { }
+    private modalRef: BsModalRef,
+    private dataService: DataService) { }
 
   ngOnInit() {
   }
 
   triggerEvent() {
     console.log("entrei", this.userToDelete);
-    this.userApiService.delete(this.userToDelete).subscribe();
+    this.userApiService.delete(this.userToDelete).subscribe(
+      () => {
+        this.dataService.getAllUsers();
+        this.modalRef.hide(); 
+      }
+    );
   }
 
 }

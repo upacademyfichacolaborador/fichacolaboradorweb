@@ -3,7 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Employee } from 'src/app/core/models/employee/employee';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { faPlus, faTrash, faUserEdit, faInfo } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrash, faUserEdit, faInfo, faRedoAlt, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { EmployeeNewComponent } from './employee-new/employee-new.component';
 import { EmployeeApiService } from 'src/app/core/services/employee/employee-api.service';
 import { EmployeeDeleteComponent } from './employee-delete/employee-delete.component';
@@ -21,13 +21,13 @@ private subscriptionData : Subscription;
 rows = [];
 temp = [];
 selected = [];
-// columns = [{ prop: 'name' }, { name: 'admissionDate' }];
 public modalRef: BsModalRef;
 public iconNew = faPlus;
 public iconTrash = faTrash;
 public iconInfo = faInfo;
 public iconEdit = faUserEdit;
-
+public iconRefresh = faRedoAlt;
+public iconExcelExport = faFileExport;
 
 constructor(
     private dataService: DataService,

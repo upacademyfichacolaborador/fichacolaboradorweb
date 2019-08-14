@@ -1,24 +1,14 @@
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+<nav class=" navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://www.aubay.pt/" target="_blank">
     <img src="https://www.aubay.pt/img/aubayCopy.png" width="50" height="50" alt=""> Aubay Portugal
   </a>
 
 
   <div class="dropdown " dropdown>
-    <a class="dropdown-toggle  text-light" dropdownToggle> Welcome {{name}}</a>
+    <a class="dropdown-toggle  text-light" href="javascript:void(0)" dropdownToggle> Welcome {{name}}</a>
     <div class="dropdown-menu mt-2 mr-3" *dropdownMenu>
       <a class="dropdown-item" href="javascript:void(0)" (click)="logout()">Logout</a>
     </div>
   </div>
-  <!-- <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
-        <a href id="basic-link" dropdownToggle (click)="false"
-           aria-controls="basic-link-dropdown">Welcome {{name}}</a>
-        <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
-            role="menu" aria-labelledby="basic-link">
-          <li role="menuitem">
-              <a class="dropdown-item" href="javascript:void(0)" (click)="logout()">Logout</a>
-          </li>
-        </ul>
-      </span> -->
 
 </nav>

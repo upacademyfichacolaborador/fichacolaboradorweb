@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { UserNewComponent } from './user-new/user-new.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { faPlus, faTrash, faUserEdit, faInfo } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrash, faUserEdit, faInfo, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import { UserApiService } from 'src/app/core/services/user/user-api.service';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 
@@ -26,6 +26,7 @@ public iconNew = faPlus;
 public iconTrash = faTrash;
 public iconInfo = faInfo;
 public iconEdit = faUserEdit;
+public iconRefresh = faRedoAlt;
 
 
 
