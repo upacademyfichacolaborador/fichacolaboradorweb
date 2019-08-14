@@ -15,12 +15,11 @@ export class UserDeleteComponent implements OnInit {
    // private id = 
 
   ngOnInit() {
-    console.log(this.userToDelete);
   }
 
-  triggerEvent(id) {
-    console.log("entrei", id);
-    this.userApiService.delete(id).subscribe();
+  triggerEvent() {
+    console.log("entrei", this.userToDelete);
+    this.userApiService.delete(this.userToDelete).subscribe();
   }
 
 }
