@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserApiService } from 'src/app/core/services/user/user-api.service';
 import { BsModalRef } from 'ngx-bootstrap';
 
@@ -9,16 +9,18 @@ import { BsModalRef } from 'ngx-bootstrap';
   styleUrls: ['./user-delete.component.scss']
 })
 export class UserDeleteComponent implements OnInit {
-  public id: any;
+  public userToDelete: number;
   constructor(private userApiService: UserApiService,
     private modalRef: BsModalRef) { }
+   // private id = 
 
   ngOnInit() {
+    console.log(this.userToDelete);
   }
 
-  triggerEvent() {
-    console.log("entrei", this.id);
-    this.userApiService.delete(this.id).subscribe();
+  triggerEvent(id) {
+    console.log("entrei", id);
+    this.userApiService.delete(id).subscribe();
   }
 
 }

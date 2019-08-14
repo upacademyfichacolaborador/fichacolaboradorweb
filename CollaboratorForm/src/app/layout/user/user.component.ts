@@ -69,7 +69,9 @@ constructor(
 
   public openDeleteModal(id) {
     console.log(id)
-    this.modalRef = this.modalService.show(UserDeleteComponent);
+    this.modalRef = this.modalService.show(UserDeleteComponent, {initialState: {
+      userToDelete : id
+  }});
   }
 
   // public delete(id) {
