@@ -3,10 +3,10 @@ import { Observable, Subscription } from 'rxjs';
 import { Employee } from 'src/app/core/models/employee/employee';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrash, faUserEdit, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { EmployeeNewComponent } from './employee-new/employee-new.component';
 import { EmployeeApiService } from 'src/app/core/services/employee/employee-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { EmployeeDeleteComponent } from './employee-delete/employee-delete.component';
 
 
 @Component({
@@ -24,6 +24,8 @@ columns = [{ prop: 'name' }, { name: 'admissionDate' }];
 public modalRef: BsModalRef;
 public iconNew = faPlus;
 public iconTrash = faTrash;
+public iconInfo = faInfo;
+public iconEdit = faUserEdit;
 
 
 constructor(
@@ -68,12 +70,39 @@ constructor(
     // this.modalRef.content.event;
     // this.modalRef.hide();
   }
- 
-  public delete(id) {
-    this.employeeApi.delete(id).subscribe(
+
+  public openDeleteModal(id) {
+    console.log(id)
+    this.modalRef = this.modalService.show(EmployeeDeleteComponent, {initialState: {
+      employeeToDelete : id
+  }});
+  }
+
+  // public delete(id) {
+  //   this.employeeApi.delete(id).subscribe(
+  //     () => {
+  //       this.dataService.getAllEmployees();
+  //     }
+  //   );
+  // }
+  public get(id) {
+    console.log(id)
+    this.employeeApi.get(id).subscribe(
+      
       () => {
         this.dataService.getAllEmployees();
       }
     );
   }
+
+  public edit(id) {
+    console.log(id)
+    this.employeeApi.edit(id).subscribe(
+      
+      () => {
+        this.dataService.getAllEmployees();
+      }
+    );
+  }
+
 }

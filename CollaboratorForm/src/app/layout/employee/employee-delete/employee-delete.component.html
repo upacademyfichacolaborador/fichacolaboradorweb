@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Employee Delete</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p>Deseja mesmo apagar este Employee?</p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="triggerEvent(id)">Delete Employee</button>
+</div>

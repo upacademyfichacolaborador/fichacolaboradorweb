@@ -89,7 +89,7 @@ constructor(
     this.userApi.get(id).subscribe(
       
       () => {
-        this.dataService.getAllEmployees();
+        this.dataService.getAllUsers();
       }
     );
   }
@@ -99,7 +99,7 @@ constructor(
     this.userApi.edit(id).subscribe(
       
       () => {
-        this.dataService.getAllEmployees();
+        this.dataService.getAllUsers();
       }
     );
   }

@@ -12,7 +12,6 @@ export class UserDeleteComponent implements OnInit {
   public userToDelete: number;
   constructor(private userApiService: UserApiService,
     private modalRef: BsModalRef) { }
-   // private id = 
 
   ngOnInit() {
   }
