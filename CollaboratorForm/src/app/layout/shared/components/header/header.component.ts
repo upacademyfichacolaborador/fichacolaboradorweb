@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { CredentialsApiService } from 'src/app/core/services/credentials/credentials-api.service';
 import { DataService } from 'src/app/core/services/data/data.service';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -31,5 +30,15 @@ export class HeaderComponent implements OnInit {
   public getAllEmployees() {
     this.employeeApi.getAllEmployees();
     this.employeeApi.getAllUsers();
+  }
+
+  onHidden(): void {
+    console.log('Dropdown is hidden');
+  }
+  onShown(): void {
+    console.log('Dropdown is shown');
+  }
+  isOpenChange(): void {
+    console.log('Dropdown state is changed');
   }
 }
