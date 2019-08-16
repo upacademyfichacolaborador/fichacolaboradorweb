@@ -23,7 +23,7 @@ export class EmployeeApiService {
       return this.http.delete(this._apiUrl + id);
     }
 
-    public get(id) {
+  public get(id) {
     console.log(this._apiUrl + id);
     return this.http.get(this._apiUrl + id);
   }
@@ -33,5 +33,8 @@ export class EmployeeApiService {
     return this.http.put(this._apiUrl, employee);
   }
 
+  }
+
+
   
-}
+

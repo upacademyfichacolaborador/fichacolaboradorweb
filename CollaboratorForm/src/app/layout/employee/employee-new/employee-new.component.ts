@@ -20,6 +20,9 @@ export class EmployeeNewComponent implements OnInit {
 
   triggerEvent() {
     console.log("entrei", this.email);
-    this.employeeApiService.sendEmail(this.email).subscribe();
+    this.employeeApiService.sendEmail(this.email).subscribe(   () => {
+      this.modalRef.hide(); 
+    }
+  );
   }
 }

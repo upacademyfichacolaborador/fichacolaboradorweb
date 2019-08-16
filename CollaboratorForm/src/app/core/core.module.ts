@@ -6,7 +6,9 @@ import { EmployeeApiService } from './services/employee/employee-api.service';
 
 
 
-@NgModule({})
+
+@NgModule({  declarations: []
+})
 export class CoreModule {
   static forRoot(): ModuleWithProviders {
     return {

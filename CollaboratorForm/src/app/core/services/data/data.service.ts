@@ -2,6 +2,7 @@ import { Injectable} from '@angular/core';
 import { EmployeeApiService } from '../employee/employee-api.service';
 import { ReplaySubject } from 'rxjs';
 import { UserApiService } from '../user/user-api.service';
+import { id } from '@swimlane/ngx-datatable/release/utils';
 
 
 @Injectable({
@@ -9,8 +10,9 @@ import { UserApiService } from '../user/user-api.service';
 })
 export class DataService {
   public employees$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public employee$: ReplaySubject<any> = new ReplaySubject(1);
   private employees: any[];
-
+  private employee: any;
   public users$: ReplaySubject<any[]> = new ReplaySubject(1);
   private users: any[];
 
@@ -43,6 +45,17 @@ this.getAllUsers();
         this.users$.next(res);
       }
     )
+  }
+
+  public getEmployeeById(id){
+    this.employeeApi.get(id).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.employee = res;
+        this.employee$.next(res);
+      }
+    )
+
   }
 
   

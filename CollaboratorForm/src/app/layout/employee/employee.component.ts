@@ -7,6 +7,7 @@ import { faPlus, faTrash, faUserEdit, faInfo, faRedoAlt, faFileExport } from '@f
 import { EmployeeNewComponent } from './employee-new/employee-new.component';
 import { EmployeeApiService } from 'src/app/core/services/employee/employee-api.service';
 import { EmployeeDeleteComponent } from './employee-delete/employee-delete.component';
+import { ExcelService } from 'src/app/core/services/excel/excel.service';
 
 
 @Component({
@@ -17,7 +18,11 @@ import { EmployeeDeleteComponent } from './employee-delete/employee-delete.compo
 })
 export class EmployeeComponent implements OnInit, OnDestroy {
 public employees$: Observable<Employee[]>;
+public employee$: Observable<Employee>;
 private subscriptionData : Subscription;
+private subscriptionEmployee : Subscription;
+private excelService: ExcelService;
+
 rows = [];
 temp = [];
 selected = [];
@@ -28,6 +33,7 @@ public iconInfo = faInfo;
 public iconEdit = faUserEdit;
 public iconRefresh = faRedoAlt;
 public iconExcelExport = faFileExport;
+public employee:Employee;
 
 constructor(
     private dataService: DataService,
@@ -35,13 +41,20 @@ constructor(
     private employeeApi: EmployeeApiService
   ) { 
     this.employees$ = this.dataService.employees$;
+    this.employee$ = this.dataService.employee$;
     this.subscriptionData = this.employees$.subscribe(
       (res) => {
         this.temp = res;
+        console.log('ola', this.temp);
         this.rows = this.temp;
       }
     );
-    
+    this.subscriptionEmployee = this.employee$.subscribe(
+      (res) => {
+        this.employee = res;
+        console.log('ola', this.employee);
+      }
+    );
   }
 
   ngOnInit() {
@@ -90,16 +103,19 @@ constructor(
   //     }
   //   );
   // }
+
+  getEmployeeById(id) {
+    this.dataService.getEmployeeById(id);
+  }
+
+/* 
   public get(id) {
     console.log(id)
     this.employeeApi.get(id).subscribe(
       
-      () => {
-        this.dataService.getAllEmployees();
-      }
     );
   }
-
+ */
   public edit(id) {
     console.log(id)
     this.employeeApi.edit(id).subscribe(
@@ -112,5 +128,9 @@ constructor(
 
   onSelect(row){
     console.log(row)
+  }
+
+  exportAsXLSX(): void {
+    this.excelService.exportAsExcelFile(this.rows, 'sample');
   }
 }
