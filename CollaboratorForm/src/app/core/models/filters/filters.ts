@@ -3,10 +3,10 @@ export class Filters {
     'admissioDateMAX': number;
     'specialTech': string;
     'district': string;
-    'previousPage': boolean;
-    'nextPage': boolean;
-    'countResults': number;
-    'startPage': number;
+    // 'previousPage': boolean;
+    // 'nextPage': boolean;
+    // 'countResults': number;
+    // 'startPage': number;
     constructor(data?: any) {
         Object.assign(this, data);
     }

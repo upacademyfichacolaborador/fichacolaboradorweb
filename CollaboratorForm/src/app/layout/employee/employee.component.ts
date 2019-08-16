@@ -20,14 +20,20 @@ import { Filters } from 'src/app/core/models/filters/filters';
 export class EmployeeComponent implements OnInit, OnDestroy {
 public employees$: Observable<Employee[]>;
 public employee$: Observable<Employee>;
+public filter$: Observable<Filters>;
+
 private subscriptionData : Subscription;
 private subscriptionEmployee : Subscription;
 
-public filter$: Observable<Filters>;
-
+date;
+district = null;
+specialTech = null;
+admissioDateMIN = null;
+admissioDateMAX = null;
 rows = [];
 temp = [];
 selected = [];
+
 public modalRef: BsModalRef;
 public iconNew = faPlus;
 public iconTrash = faTrash;
@@ -36,7 +42,7 @@ public iconEdit = faUserEdit;
 public iconRefresh = faRedoAlt;
 public iconExcelExport = faFileExport;
 public employee:Employee;
-public filters:Filters;
+public filters:Filters = new Filters();
 
 constructor(
     private dataService: DataService,
@@ -44,6 +50,7 @@ constructor(
     private employeeApi: EmployeeApiService,
     private excelService: ExcelService
   ) { 
+   
     this.employees$ = this.dataService.employees$;
     this.employee$ = this.dataService.employee$;
     this.subscriptionData = this.employees$.subscribe(
@@ -60,13 +67,37 @@ constructor(
       }
     );
   }
-
+  
   ngOnInit() {
     
   }
 
   ngOnDestroy() {
     this.subscriptionData.unsubscribe();
+  }
+
+  filterSearch(){
+    var millisecondsPerDay = 24 * 60 * 60 * 1000;
+    this.date[0];
+    this.date[1];
+    this.district;
+    this.specialTech;
+    this.filters.admissioDateMIN = this.date[0].getTime();
+    this.filters.admissioDateMAX = this.date[1].getTime();
+    this.filters.district = this.district;
+    this.filters.specialTech = this.specialTech;
+    console.log(this.date);
+    console.log(this.date[0].getTime());
+    console.log(this.date[1].getTime());
+    console.log((this.date[1].getTime()-this.date[0].getTime())/millisecondsPerDay);
+    console.log(this.district);
+    console.log(this.specialTech);
+    console.log(this.filters);
+    this.employeeApi.filter(this.filters).subscribe( 
+      //() => {
+      // fazer com que a data da tabela passe a ser a data que recebe do pedido
+      //this.dataService.getAllEmployees();}
+    );
   }
 
   getAllEmployees() {
@@ -138,7 +169,4 @@ constructor(
     this.excelService.exportAsExcelFile(this.selected, 'Ficha Colaboradores');
   }
 
-  filter(){
-
-  }
 }

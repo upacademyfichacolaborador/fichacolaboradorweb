@@ -10,43 +10,37 @@
   <fa-icon [icon]="iconExcelExport"></fa-icon>
 </button>
 
-<button type="button" class="btn btn-danger" (click)="getAllEmployees()">
-  <fa-icon [icon]="iconTrash"></fa-icon>
-</button>
-
 <div class="row" id="filter">
-  <select data-filter="district">
+  <select data-filter="district" [(ngModel)]="district">
     <option value="">Distrito</option>
-    <option value="">Todos</option>
-    <option value="">Aveiro</option>
-    <option value="">Beja</option>
-    <option value="">Braga</option>
-    <option value="">Bragança</option>
-    <option value="">Castelo Branco</option>
-    <option value="">Coimbra</option>
-    <option value="">Évora</option>
-    <option value="">Faro</option>
-    <option value="">Guarda</option>
-    <option value="">Leiria</option>
-    <option value="">Lisboa</option>
-    <option value="">Portalegre</option>
-    <option value="">Porto</option>
-    <option value="">Santarém</option>
-    <option value="">Setúbal</option>
-    <option value="">Viana do Castelo</option>
-    <option value="">Vila Real</option>
-    <option value="">Viseu</option>
+    <option value="Aveiro">Aveiro</option>
+    <option value="Beja">Beja</option>
+    <option value="Braga">Braga</option>
+    <option value="Bragança">Bragança</option>
+    <option value="Castelo Branco">Castelo Branco</option>
+    <option value="Coimbra">Coimbra</option>
+    <option value="Évora">Évora</option>
+    <option value="Faro">Faro</option>
+    <option value="Guarda">Guarda</option>
+    <option value="Leiria">Leiria</option>
+    <option value="Lisboa">Lisboa</option>
+    <option value="Portalegre">Portalegre</option>
+    <option value="Porto">Porto</option>
+    <option value="Santarém">Santarém</option>
+    <option value="Setúbal">Setúbal</option>
+    <option value="Viana do Castelo">Viana do Castelo</option>
+    <option value="Vila Real">Vila Real</option>
+    <option value="Viseu">Viseu</option>
   </select>
-  <select data-filter="specialTech">
+  <select data-filter="specialTech" [(ngModel)]="specialTech">
     <option value="">Tecnologia Especialista</option>
-    <option value="">Todos</option>
-    <option value="">Java</option>
-    <option value="">JavaScript</option>
+    <option value="Java">Java</option>
+    <option value="JavaScript">JavaScript</option>
   </select>
   <div class="col-xs-12 col-12 col-md-4 form-group">
-    <input type="text" placeholder="Daterangepicker" class="form-control" bsDaterangepicker>
+    <input type="text" [(ngModel)]="date" (change)="showdate()" placeholder="Daterangepicker" class="form-control" bsDaterangepicker [bsConfig]="{ rangeInputFormat: 'DD/MM/YYYY', containerClass: 'theme-red', showWeekNumbers: true}">
   </div>
-  <button type="button" class="btn btn-primary" (click)="getAllEmployees()">Pesquisar</button>
+  <button type="button" class="btn btn-primary" (click)="filterSearch()">Pesquisar</button>
 </div>
 <div>
 

@@ -9,7 +9,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { UserComponent } from './user/user.component';
 import { EmployeeNewComponent } from './employee/employee-new/employee-new.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ModalModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { ModalModule, BsDatepickerModule} from 'ngx-bootstrap';
 import { UserNewComponent } from './user/user-new/user-new.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { EmployeeDeleteComponent } from './employee/employee-delete/employee-delete.component';
