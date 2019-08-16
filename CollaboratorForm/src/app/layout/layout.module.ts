@@ -27,8 +27,8 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
     FormsModule,
     FontAwesomeModule,
     ModalModule.forRoot(),
-    NgxDatatableModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    NgxDatatableModule
   ],
   entryComponents:[EmployeeNewComponent,UserNewComponent, UserDeleteComponent, EmployeeDeleteComponent, UserEditComponent]
 })
