@@ -27,7 +27,7 @@ export class UserApiService {
     return this.http.get(this._apiUrl + id);
   }
 
-  public edit(user) {
+  public editUser(user) {
     console.log(this._apiUrl);
     return this.http.put(this._apiUrl, user);
   }

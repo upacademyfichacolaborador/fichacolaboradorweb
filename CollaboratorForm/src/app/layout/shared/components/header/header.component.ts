@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CredentialsApiService } from 'src/app/core/services/credentials/credentials-api.service';
-import { DataService } from 'src/app/core/services/data/data.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { UserEditComponent } from 'src/app/layout/user/user-edit/user-edit.component';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,9 @@ import { DataService } from 'src/app/core/services/data/data.service';
 })
 export class HeaderComponent implements OnInit {
   public name: string;
+  public modalRef: BsModalRef;
   constructor(
-
+    private modalService: BsModalService,
     private router: Router,
     private credentialsApi: CredentialsApiService
   ) {
@@ -27,5 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   
-
+  public openEditPasswordModal() {
+    this.modalRef = this.modalService.show(UserEditComponent);
+  }
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { CommonModule} from '@angular/common';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { SharedModule } from './shared/shared.module';
 import {FormsModule} from '@angular/forms'
@@ -10,16 +9,17 @@ import { EmployeeComponent } from './employee/employee.component';
 import { UserComponent } from './user/user.component';
 import { EmployeeNewComponent } from './employee/employee-new/employee-new.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { UserNewComponent } from './user/user-new/user-new.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { EmployeeDeleteComponent } from './employee/employee-delete/employee-delete.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 
 
 
 @NgModule({
-  declarations: [LayoutComponent, EmployeeComponent, UserComponent, EmployeeNewComponent, UserNewComponent, UserDeleteComponent, EmployeeDeleteComponent],
+  declarations: [LayoutComponent, EmployeeComponent, UserComponent, EmployeeNewComponent, UserNewComponent, UserDeleteComponent, EmployeeDeleteComponent, UserEditComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule,
@@ -27,8 +27,9 @@ import { EmployeeDeleteComponent } from './employee/employee-delete/employee-del
     FormsModule,
     FontAwesomeModule,
     ModalModule.forRoot(),
-    NgxDatatableModule
+    NgxDatatableModule,
+    BsDatepickerModule.forRoot()
   ],
-  entryComponents:[EmployeeNewComponent,UserNewComponent, UserDeleteComponent, EmployeeDeleteComponent]
+  entryComponents:[EmployeeNewComponent,UserNewComponent, UserDeleteComponent, EmployeeDeleteComponent, UserEditComponent]
 })
 export class LayoutModule { }

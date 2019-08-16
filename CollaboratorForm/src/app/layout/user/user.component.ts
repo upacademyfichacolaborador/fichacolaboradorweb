@@ -78,6 +78,7 @@ constructor(
   }});
   }
 
+
   // public delete(id) {
   //   console.log(id)
   //   this.userApi.delete(id).subscribe(
@@ -98,15 +99,15 @@ constructor(
     );
   }
 
-  public edit(id) {
-    console.log(id)
-    this.userApi.edit(id).subscribe(
+  // public edit(id) {
+  //   console.log(id)
+  //   this.userApi.edit(id).subscribe(
       
-      () => {
-        this.dataService.getAllUsers();
-      }
-    );
-  }
+  //     () => {
+  //       this.dataService.getAllUsers();
+  //     }
+  //   );
+  // }
 
   onSelect(row){
     console.log(row)

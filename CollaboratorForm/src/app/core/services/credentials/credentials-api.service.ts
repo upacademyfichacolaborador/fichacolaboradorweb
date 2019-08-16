@@ -33,6 +33,11 @@ public isOwner(): boolean {
   public setCurrentCredentials(currentCredentials: any){
     return this._currentCredentials = currentCredentials;
   }
+  
+  public getCurrentCredentials(){
+    return this._currentCredentials;
+  }
+
   public login(credentials: Credentials) {
     return this.http.post(this._loginUrl, credentials);
   }
@@ -42,5 +47,9 @@ public isOwner(): boolean {
   }
   public getCurrentName(): string {
     return this._currentCredentials.username
+  }
+
+  public getCurrentPassword(): string {
+    return this._currentCredentials.password
   }
 }
