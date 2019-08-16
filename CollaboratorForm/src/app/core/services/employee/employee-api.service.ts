@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class EmployeeApiService {
   private _apiUrl = "http://localhost:8080/projetoFichaColaborador/api/employees/";
   private _apiUrl2 = "http://localhost:8080/projetoFichaColaborador/api/token/generateToken/";
+  private _apiUrl3 = "http://localhost:8080/projetoFichaColaborador/api/employees/filter";
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +32,10 @@ export class EmployeeApiService {
   public edit(employee) {
     console.log(this._apiUrl);
     return this.http.put(this._apiUrl, employee);
+  }
+
+  public filter(){
+    
   }
 
   }

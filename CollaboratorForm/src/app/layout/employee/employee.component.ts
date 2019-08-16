@@ -8,6 +8,7 @@ import { EmployeeNewComponent } from './employee-new/employee-new.component';
 import { EmployeeApiService } from 'src/app/core/services/employee/employee-api.service';
 import { EmployeeDeleteComponent } from './employee-delete/employee-delete.component';
 import { ExcelService } from 'src/app/core/services/excel/excel.service';
+import { Filters } from 'src/app/core/models/filters/filters';
 
 
 @Component({
@@ -21,7 +22,8 @@ public employees$: Observable<Employee[]>;
 public employee$: Observable<Employee>;
 private subscriptionData : Subscription;
 private subscriptionEmployee : Subscription;
-private excelService: ExcelService;
+
+public filter$: Observable<Filters>;
 
 rows = [];
 temp = [];
@@ -34,11 +36,13 @@ public iconEdit = faUserEdit;
 public iconRefresh = faRedoAlt;
 public iconExcelExport = faFileExport;
 public employee:Employee;
+public filters:Filters;
 
 constructor(
     private dataService: DataService,
     private modalService: BsModalService,
-    private employeeApi: EmployeeApiService
+    private employeeApi: EmployeeApiService,
+    private excelService: ExcelService
   ) { 
     this.employees$ = this.dataService.employees$;
     this.employee$ = this.dataService.employee$;
@@ -131,6 +135,10 @@ constructor(
   }
 
   exportAsXLSX(): void {
-    this.excelService.exportAsExcelFile(this.rows, 'sample');
+    this.excelService.exportAsExcelFile(this.selected, 'Ficha Colaboradores');
+  }
+
+  filter(){
+
   }
 }
