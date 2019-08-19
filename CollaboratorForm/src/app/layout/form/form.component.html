@@ -3,23 +3,33 @@
     <form [formGroup]="employeesForm" (ngSubmit)="onSubmit()">
         <h3>Employees</h3>
 
+
         <label>
             Nome:
-            <input id="name" type="text" formControlName="name" required>
+            <input id="name" type="text" formControlName="name" size="50" required>
         </label>
         <div *ngIf="employeesForm.controls['name'].invalid && clickSubmit" class="alert alert-danger">
             <div *ngIf="employeesForm.controls['name'].errors.required">
                 Name is required.
             </div>
         </div>
+        <label>
+                Email:
+                <input id="email" type="email" class="form-control" formControlName="email" size="55">
+            </label>
+            <div *ngIf="employeesForm.controls['email'].invalid && clickSubmit" class="alert alert-danger">
+                <div *ngIf="employeesForm.controls['email'].errors.required">
+                    Email is required.
+                </div>
+            </div>
 
         <label>
-            Email:
-            <input id="email" type="email" class="form-control" formControlName="email">
+            Data de Nascimento:
+            <input type="date" formControlName="birthDate" size="50">
         </label>
-        <div *ngIf="employeesForm.controls['email'].invalid && clickSubmit" class="alert alert-danger">
-            <div *ngIf="employeesForm.controls['email'].errors.required">
-                Email is required.
+        <div *ngIf="employeesForm.controls['birthDate'].invalid && clickSubmit" class="alert alert-danger">
+            <div *ngIf="employeesForm.controls['birthDate'].errors.required">
+                Birth date is required.
             </div>
         </div>
 
@@ -311,15 +321,7 @@
             </div>
         </div>
 
-        <label>
-            Data de Nascimento:
-            <input type="date" formControlName="birthDate">
-        </label>
-        <div *ngIf="employeesForm.controls['birthDate'].invalid && clickSubmit" class="alert alert-danger">
-            <div *ngIf="employeesForm.controls['birthDate'].errors.required">
-                Birth date is required.
-            </div>
-        </div>
+
 
         <!-- o nif e niss tem de se ver se fica do tipo number ou text -->
         <label>
@@ -352,10 +354,10 @@
         <label>
             Estado Civil:
             <select type="text" formControlName="maritalStatus" id="maritalStatus" required>
-                    <option value="">Escolha uma opçāo</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Nāo</option>
-                    </select>
+                <option value="">Escolha uma opçāo</option>
+                <option value="true">Sim</option>
+                <option value="false">Nāo</option>
+            </select>
         </label>
         <div *ngIf="employeesForm.controls['maritalStatus'].invalid && clickSubmit" class="alert alert-danger">
             <div *ngIf="employeesForm.controls['maritalStatus'].errors.required">
@@ -365,20 +367,20 @@
 
         <label>
             Conjuge Trabalha:
-            <select type="text" formControlName="maritalWorkStatus" id="maritalWorkStatus" >
-                    <option value="">Escolha uma opçāo</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Nāo</option>
-                    </select>
+            <select type="text" formControlName="maritalWorkStatus" id="maritalWorkStatus">
+                <option value="">Escolha uma opçāo</option>
+                <option value="true">Sim</option>
+                <option value="false">Nāo</option>
+            </select>
         </label>
 
         <label>
             Dependentes:
-            <select type="text" formControlName="dependents" id="dependents" >
-                    <option value="">Escolha uma opçāo</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Nāo</option>
-                    </select>
+            <select type="text" formControlName="dependents" id="dependents">
+                <option value="">Escolha uma opçāo</option>
+                <option value="true">Sim</option>
+                <option value="false">Nāo</option>
+            </select>
         </label>
 
         <label>
@@ -411,11 +413,11 @@
         <label>
             Categoria Profissional:
             <select type="text" formControlName="professionalCategory" id="professionalCategory" required>
-                    <option value="">Escolha uma opçāo</option>
-                    <option value="Arquiteto de sistemas">Arquiteto de sistemas</option>
-                    <option value="Designer digital">Designer digital</option>
-                    <option value="Programador">Programador</option>
-                    </select>
+                <option value="">Escolha uma opçāo</option>
+                <option value="Arquiteto de sistemas">Arquiteto de sistemas</option>
+                <option value="Designer digital">Designer digital</option>
+                <option value="Programador">Programador</option>
+            </select>
         </label>
 
         <label>
@@ -432,38 +434,37 @@
             Data de Admissao:
             <input type="date" formControlName="admissionDate" required>
             <div *ngIf="employeesForm.controls['admissionDate'].invalid && clickSubmit" class="alert alert-danger">
-                    <div *ngIf="employeesForm.controls['admissionDate'].errors.required">
-                        Admission date is required.
-                    </div>
+                <div *ngIf="employeesForm.controls['admissionDate'].errors.required">
+                    Admission date is required.
                 </div>
+            </div>
         </label>
 
         <label>
             Salario Bruto:
             <input type="number" formControlName="grossSalary">
             <div *ngIf="employeesForm.controls['grossSalary'].invalid && clickSubmit" class="alert alert-danger">
-                    <div *ngIf="employeesForm.controls['grossSalary'].errors.required">
-                        Gross salary is required.
-                    </div>
+                <div *ngIf="employeesForm.controls['grossSalary'].errors.required">
+                    Gross salary is required.
                 </div>
+            </div>
         </label>
 
         <label>
             Tipo de Contrato:
-            <input type="text" formControlName="contractType">
             <select type="text" formControlName="contractType" id="contractType" required>
-                    <option value="">Escolha uma opçāo</option>
-                    <option value="Contrato de trabalho a termo certo">Contrato de trabalho a termo certo</option>
-                    <option value="Contrato de trabalho a termo incerto">Contrato de trabalho a termo incerto</option>
-                    <option value="Contrato sem termo">Contrato sem termo</option>
-                    <option value="Prestaçāo de serviços">Prestaçāo de serviços</option>
-                    </select>
+                <option value="">Escolha uma opçāo</option>
+                <option value="Contrato de trabalho a termo certo">Contrato de trabalho a termo certo</option>
+                <option value="Contrato de trabalho a termo incerto">Contrato de trabalho a termo incerto</option>
+                <option value="Contrato sem termo">Contrato sem termo</option>
+                <option value="Prestaçāo de serviços">Prestaçāo de serviços</option>
+            </select>
         </label>
         <div *ngIf="employeesForm.controls['contractType'].invalid && clickSubmit" class="alert alert-danger">
-                <div *ngIf="employeesForm.controls['contractType'].errors.required">
-                    Contract type is required.
-                </div>
+            <div *ngIf="employeesForm.controls['contractType'].errors.required">
+                Contract type is required.
             </div>
+        </div>
 
         <label>
             Bonus:
@@ -472,11 +473,11 @@
 
         <label>
             Duodecimos:
-            <select type="text" formControlName="twelfths" id="twelfths" >
-                    <option value="">Escolha uma opçāo</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Nāo</option>
-                    </select>
+            <select type="text" formControlName="twelfths" id="twelfths">
+                <option value="">Escolha uma opçāo</option>
+                <option value="true">Sim</option>
+                <option value="false">Nāo</option>
+            </select>
         </label>
 
         <label>
@@ -491,39 +492,39 @@
 
         <label>
             Subsidio Alimentaçāo em cartāo Alacard:
-            <select type="text" formControlName="foodAllowence" id="foodAllowence" >
-                    <option value="">Escolha uma opçāo</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Nāo</option>
-                    </select>
+            <select type="text" formControlName="foodAllowence" id="foodAllowence">
+                <option value="">Escolha uma opçāo</option>
+                <option value="true">Sim</option>
+                <option value="false">Nāo</option>
+            </select>
         </label>
         <div *ngIf="employeesForm.controls['foodAllowence'].invalid && clickSubmit" class="alert alert-danger">
-                <div *ngIf="employeesForm.controls['foodAllowence'].errors.required">
-                    Food allowence is required.
-                </div>
+            <div *ngIf="employeesForm.controls['foodAllowence'].errors.required">
+                Food allowence is required.
             </div>
+        </div>
 
         <label>
             Horario de trabalho:
-            <select type="text" formControlName="workSchedule" id="workSchedule" >
-                    <option value="">Escolha uma opçāo</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Nāo</option>
-                    </select>
+            <select type="text" formControlName="workSchedule" id="workSchedule">
+                <option value="">Escolha uma opçāo</option>
+                <option value="true">Sim</option>
+                <option value="false">Nāo</option>
+            </select>
         </label>
         <div *ngIf="employeesForm.controls['workSchedule'].invalid && clickSubmit" class="alert alert-danger">
-                <div *ngIf="employeesForm.controls['workSchedule'].errors.required">
-                    Work Schedule is required.
-                </div>
+            <div *ngIf="employeesForm.controls['workSchedule'].errors.required">
+                Work Schedule is required.
             </div>
+        </div>
 
         <label>
             Praticas Desporto?:
-            <select type="text" formControlName="sports" id="sports" >
-                    <option value="">Escolha uma opçāo</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Nāo</option>
-                    </select>
+            <select type="text" formControlName="sports" id="sports">
+                <option value="">Escolha uma opçāo</option>
+                <option value="true">Sim</option>
+                <option value="false">Nāo</option>
+            </select>
         </label>
 
         <label>
@@ -580,7 +581,7 @@
         <label>
             Seguro de saude:
             <input type="text" formControlName="healthInsurance">
-            
+
         </label>
 
         <label>
