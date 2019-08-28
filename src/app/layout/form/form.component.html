@@ -765,8 +765,10 @@
                     </label>
 
                 </div>
-                <button *ngIf="isVisibleSubmit" id="submitbtn" (click)="triggerEvent()">Submeter</button>
-                <button *ngIf="isVisibleEdit" id="submitbtn" (click)="editEvent()">Editar</button>
+                <button *ngIf="isVisibleSubmit" class="form-control" style="width: 200px; text-align: center;
+                float: right; background-color:#E14C14; color: white; border-color: black;" (click)="triggerEvent()">Submeter</button>
+                <button *ngIf="isVisibleEdit" class="form-control" style="width: 200px; text-align: center;
+                float: right; background-color:#E14C14; color: white; border-color: black;" (click)="editEvent()">Editar</button>
             </div>
 
         </form>

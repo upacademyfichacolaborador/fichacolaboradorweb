@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { EmployeeApiService } from '../employee/employee-api.service';
 import { ReplaySubject } from 'rxjs';
 import { UserApiService } from '../user/user-api.service';
-import { id } from '@swimlane/ngx-datatable/release/utils';
-
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +13,11 @@ export class DataService {
   private employee: any;
   public users$: ReplaySubject<any[]> = new ReplaySubject(1);
   private users: any[];
+  public statisticProfessionalCategory$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public statisticProfessionalCategory: any[];
+  public statisticSpecialTech$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public statisticSpecialTech: any[];
+
 
   constructor(
     private employeeApi: EmployeeApiService,
@@ -32,7 +35,7 @@ export class DataService {
         this.employees$.next(res);
       },
       (error) => {
-        console.log(error)
+        this.employees$.next([]);
       })
   }
 
@@ -44,7 +47,7 @@ export class DataService {
         this.users$.next(res);
       },
       (error) => {
-        console.log(error)
+        this.users$.next([]);
       })
   }
 
@@ -56,7 +59,6 @@ export class DataService {
         this.employee$.next(res);
       },
       (error) => {
-        console.log(error)
       })
   }
 
@@ -64,4 +66,29 @@ export class DataService {
     console.log("entrei")
     return this.employeeApi.get(id);
   }
+
+  public getStatisticProfessionalCategory() {
+    this.employeeApi.statisticProfessionalCategory().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.statisticProfessionalCategory = res;
+        this.statisticProfessionalCategory$.next(res);
+      },
+      (error) => {
+        console.log(error)
+      })
+  }
+
+  public getStatisticSpecialTech() {
+    this.employeeApi.statisticSpecialTech().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.statisticSpecialTech = res;
+        this.statisticSpecialTech$.next(res);
+      },
+      (error) => {
+        console.log(error)
+      })
+  }
+
 }

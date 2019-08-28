@@ -8,7 +8,7 @@ import { DataTechService } from 'src/app/core/services/dataTech/data-tech.servic
 import { DataProfessionalCategoryService } from 'src/app/core/services/dataProfessionalCategory/data-professional-category.service';
 import { IOption } from 'ng-select';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/core/services/data/data.service';
 import * as moment from 'moment';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -70,6 +70,7 @@ export class FormComponent implements OnInit {
    'C++', 'C', 'TypeScript', 'Ruby', 'Swift', 'VisualBasic', 'Perl'];
  */
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private employeeApiService: EmployeeApiService,
     private dataCountry: DataCountryService,
@@ -323,9 +324,9 @@ export class FormComponent implements OnInit {
   public triggerEvent() {
     console.log(this.employeesForm.value.companyFinancingRelative);
     this.clickSubmit = true;
-    /* if (this.employeesForm.invalid) {
+    if (this.employeesForm.invalid) {
      return
-   }  */
+   } 
     console.log(this.employeesForm.value.companyFinancingRelative);
     console.log(this.employeesForm.value);
     this.employee = new Employee(this.employeesForm.value);
@@ -341,6 +342,7 @@ export class FormComponent implements OnInit {
         console.log(res);
       }
     )
+    this.router.navigate(['/colaboradores']);
   }
   public editEvent() {
     
@@ -359,6 +361,7 @@ export class FormComponent implements OnInit {
         console.log(res)
       }
     )
+    this.router.navigate(['/colaboradores']);
   }
 
   onSelectedOtherTech(event) {

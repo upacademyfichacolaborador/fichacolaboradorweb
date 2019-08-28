@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DataService } from 'src/app/core/services/data/data.service';
 
 @Component({
   selector: 'app-pie-chart',
@@ -7,13 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PieChartComponent implements OnInit {
 
-  public pieChartLabels = ['Sales Q1', 'Sales Q2', 'Sales Q3', 'Sales Q4'];
-  public pieChartData = [120, 150, 180, 90];
+  public statisticSpecialTech: any;
+
+  public pieChartLabels = [];
+  public pieChartData = [];
   public pieChartType = 'pie';
 
-  constructor() { }
+  constructor(
+    private dataService : DataService,
+  ) { 
+    this.statisticSpecialTech = this.dataService.statisticSpecialTech;
+  }
 
   ngOnInit() {
+    this.statisticSpecialTech.forEach(element => {
+    this.pieChartData.push( element[0]);
+    this.pieChartLabels.push(element[1]);
+    });
+
   }
 
 }

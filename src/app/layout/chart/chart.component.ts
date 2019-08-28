@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeApiService } from 'src/app/core/services/employee/employee-api.service';
+import { DataService } from 'src/app/core/services/data/data.service';
 
 @Component({
   selector: 'app-chart',
@@ -10,9 +12,21 @@ export class ChartComponent implements OnInit {
   title = 'ngchart';
   chart="bar";
 
-  constructor() { }
+  constructor(
+    private dataService: DataService,
+  ) { }
 
   ngOnInit() {
+    this.getStatisticSpecialTech();
+    this.getStatisticProfessionalCategory();
+  }
+
+  getStatisticSpecialTech(){
+    this.dataService.getStatisticProfessionalCategory();
+  }
+
+  getStatisticProfessionalCategory(){
+    this.dataService.getStatisticSpecialTech();
   }
 
 }

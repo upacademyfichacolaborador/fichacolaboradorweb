@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/core/services/data/data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-doughnut-chart',
@@ -7,13 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoughnutChartComponent implements OnInit {
 
-  public doughnutChartLabels = ['Sales Q1', 'Sales Q2', 'Sales Q3', 'Sales Q4'];
-  public doughnutChartData = [120, 150, 180, 90];
+  public statisticProfessionalCategory: any;
+
+  public doughnutChartLabels = [];
+  public doughnutChartData = [];
   public doughnutChartType = 'doughnut';
 
-  constructor() { }
+  constructor(
+    private dataService : DataService,
+  ) { 
+    this.statisticProfessionalCategory = this.dataService.statisticProfessionalCategory;
+  }
 
   ngOnInit() {
-  }
+    this.statisticProfessionalCategory.forEach(element => {
+      this.doughnutChartData.push( element[0]);
+      this.doughnutChartLabels.push(element[1]);
+  });
+}
 
 }

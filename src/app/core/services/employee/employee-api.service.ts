@@ -10,7 +10,9 @@ export class EmployeeApiService {
   private _apiUrl = "http://localhost:8080/projetoFichaColaborador/api/employees/";
   private _apiUrl2 = "http://localhost:8080/projetoFichaColaborador/api/token/generateToken/";
   private _apiUrl3 = "http://localhost:8080/projetoFichaColaborador/api/employees/filter";
-
+  private _apiUrl4 = "http://localhost:8080/projetoFichaColaborador/api/employees/statisticSpecialTech";
+  private _apiUrl5 = "http://localhost:8080/projetoFichaColaborador/api/employees/statisticProfessionalCategory";
+  
   constructor(private http: HttpClient) { }
 
   public getAllEmployees() {
@@ -41,11 +43,20 @@ export class EmployeeApiService {
     return this.http.put(this._apiUrl, employee);
   }
 
-  public filter(filters){
+  public filter(filters) {
     console.log(filters);
     return this.http.post(this._apiUrl3, filters);
   }
 
+  public statisticSpecialTech() {
+    console.log();
+    return this.http.get(this._apiUrl4);
+  }
+
+  public statisticProfessionalCategory() {
+    console.log();
+    return this.http.get(this._apiUrl5);
+  }
 }
 
 

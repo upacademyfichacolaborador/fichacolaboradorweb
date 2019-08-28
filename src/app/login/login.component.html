@@ -8,14 +8,14 @@
 
     <div class="loginForm">
       <h4>Employee System Manager</h4>
-      <label for="username"><b>Username</b></label>
+      <label for="username"><b>Utilizador</b></label>
       <input class="form-control" type="text" placeholder="Enter Username" id="username" [(ngModel)]="credentials.username" name="username"
         required>
       <label for="password"><b>Password</b></label>
       <input type="password" class="form-control" placeholder="Enter Password" id="password" name="password" [(ngModel)]="credentials.password"
         required>
       <div class="text-center">
-        <button type="submit" value="Login" id="submit" (click)="login()">Login</button>
+        <button type="submit" value="Login" id="submit" (click)="login()">Entrar</button>
       </div>
     </div>
   </form>
