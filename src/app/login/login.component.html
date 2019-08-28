@@ -1,0 +1,29 @@
+<div class="gola vh-100" >
+
+  <img src="https://www.aubay.pt/img/aubayCopy.png" alt="Avatar" class="imgProperties">
+
+
+  <form class="" action="/action_page.php">
+
+
+    <div class="loginForm">
+      <h4>Employee System Manager</h4>
+      <label for="username"><b>Username</b></label>
+      <input class="form-control" type="text" placeholder="Enter Username" id="username" [(ngModel)]="credentials.username" name="username"
+        required>
+      <label for="password"><b>Password</b></label>
+      <input type="password" class="form-control" placeholder="Enter Password" id="password" name="password" [(ngModel)]="credentials.password"
+        required>
+      <div class="text-center">
+        <button type="submit" value="Login" id="submit" (click)="login()">Login</button>
+      </div>
+    </div>
+  </form>
+  <div class="loginFooter">
+    <p>AUBAY PORTUGAL - Edificio Duque D'Ávila</p>
+    <p>Avenida Duque de Ávila 46, 7ºC - 1050-083 Lisboa</p>
+    <p><a href="https://www.aubay.com/">www.aubay.com</a></p>
+  </div>
+
+
+</div>

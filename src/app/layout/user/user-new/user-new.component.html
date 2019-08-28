@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">User Create</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <input class="w-100 p-1 m-1 form-control" name="username" type="text" [(ngModel)]="user.username" placeholder="Username" />
+</div>
+<div class="modal-body">
+    <input class="w-100 p-1 m-1 form-control" name="password" type="text" [(ngModel)]="user.password" placeholder="Password" />
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-warning waves-effect" (click)="triggerEvent()">Create User</button>
+</div>

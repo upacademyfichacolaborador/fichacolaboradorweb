@@ -1,0 +1,35 @@
+<!-- <nav class=" navbar navbar-light fixed-top bg-light flex-md-nowrap p-60 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://www.aubay.pt/" target="_blank">
+    <img src="https://www.aubay.pt/img/aubayCopy.png"  height="50" alt=""> Aubay Portugal
+  </a>
+
+
+  <div class="dropdown " dropdown>
+    <a class="dropdown-toggle  text-dark" href="javascript:void(0)" dropdownToggle> Welcome {{name}}</a>
+    <div class="dropdown-menu mt-2 mr-3" *dropdownMenu>
+      <a class="dropdown-item" href="javascript:void(0)" (click)="logout()">Logout</a>
+      <a class="dropdown-item" href="javascript:void(0)" (click)="openEditPasswordModal()">Editar Password</a>
+    </div>
+   
+  </div>
+
+</nav> -->
+
+<div class="header">
+  <nav class=" navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow" style="
+  height: 44px ;background-color: white">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" target="_blank">
+      <img src="https://www.aubay.pt/img/aubayCopy.png" href="https://www.aubay.pt/"
+        style="position: absolute;height: 100px;width: 100px;top: -16px;left: 112px" width="50" height="50" alt="">
+    </a>
+
+    <div class="dropdown " dropdown>
+      <a class="dropdown-toggle  text-dark" href="javascript:void(0)" dropdownToggle> Welcome {{name}}</a>
+      <div class="dropdown-menu mt-2 mr-3" *dropdownMenu>
+        <a class="dropdown-item" href="javascript:void(0)" (click)="logout()">Logout</a>
+        <a class="dropdown-item" href="javascript:void(0)" (click)="openEditPasswordModal()">Editar Password</a>
+      </div>
+
+    </div>
+  </nav>
+</div>

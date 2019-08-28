@@ -1,0 +1,774 @@
+<div id="form">
+    <div class="container">
+        <div class="btn-group text-center stateButtons" role="group" aria-label="Basic example"
+            style="margin-bottom: 40px;">
+            <button [ngClass]="{'tabSelected': state ==='init'}" type="button" class="btn btn-secondary"
+                (click)="state = 'init'">Dados Pessoais</button>
+            <button [ngClass]="{'tabSelected': state ==='contract'}" type="button" class="btn btn-secondary"
+                (click)="state = 'contract'">Dados de Contratação</button>
+            <button [ngClass]="{'tabSelected': state ==='client'}" type="button" class="btn btn-secondary"
+                (click)="state = 'client'">Cliente</button>
+            <button [ngClass]="{'tabSelected': state ==='lifestyle'}" type="button" class="btn btn-secondary"
+                (click)="state = 'lifestyle'">LifeStyle</button>
+
+        </div>
+        <form [formGroup]="employeesForm">
+            <div *ngIf="state ==='init'">
+
+                <div class="row">
+                    <div class="form-group col-sm-8">
+                        <label class="w-100">
+                            Nome: <span class="required">*</span>
+                            <input type="text" formControlName="name" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.name.errors}">
+                            <div *ngIf="f.name.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.name.errors.required">
+                                    Name is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label>
+                            Data de Nascimento:<span class="required">*</span>
+                            <input type="date" formControlName="birthDate" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.birthDate.errors}"
+                                value="{{employeebirthDate | date:'yyyy-MM-dd'}}" (change)="fixbirthdate($event)">
+                            <div *ngIf="f.birthDate.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.birthDate.errors.required">
+                                    Birth date is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label class="w-100">
+                            Email:<span class="required">*</span>
+                            <input type="email" class="form-control" formControlName="email"
+                                [ngClass]="{'is-invalid': clickSubmit && f.email.errors}">
+                            <div *ngIf="f.email.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">
+                                    Email is required.
+                                </div>
+                                <div *ngIf="f.email.errors.email">
+                                    Email deve ser válido.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-sm-3">
+                        <label class="w-100">
+                            Telefone:<span class="required">*</span>
+                            <input type="tel" class="form-control" formControlName="phoneNumber"
+                                [ngClass]="{'is-invalid': clickSubmit && f.phoneNumber.errors}" minlength="9">
+                            <div *ngIf="f.phoneNumber.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.phoneNumber.errors.required">
+                                    Phone Number is required.
+                                </div>
+                                <div *ngIf="f.phoneNumber.errors.minlength">
+                                    Phone Number must be at least 9 characters long.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-sm-3">
+                        <label class="w-100">
+                            Nacionalidade:<span class="required">*</span>
+                            <select formControlName="nationality" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.nationality.errors}">
+                                <option value="">Escolha uma opçāo</option>
+                                <option *ngFor="let c of dataC" [value]="c.nome_pais">{{c.nome_pais}}
+                                </option>
+                            </select>
+                            <div *ngIf="f.nationality.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.nationality.errors.required">
+                                    Select your nationality, it is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" form-group col-sm-2">
+                        <label class="w-100">
+                            Codigo Postal:<span class="required">*</span>
+                            <input class="form-control" formControlName="postalCode" type="text"
+                                [ngClass]="{'is-invalid': clickSubmit && f.postalCode.errors}">
+                            <!-- este pattern ainda esta em construcao ate porque a melhor solucao é aplicada com javascript// ver se fica type number ou text -->
+                            <div *ngIf="f.postalCode.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.postalCode.errors.required">
+                                    Postal Code is required.
+                                </div>
+                                <!-- <div *ngIf="f.postalCode.errors.pattern">
+                                Postal Code pattern must be 0000-000.
+                            </div> -->
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-sm-2">
+                        <label class="w-100">
+                            Distrito:<span class="required">*</span>
+                            <select type="text" formControlName="district" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.district.errors}">
+                                <option value="">Escolha uma opçāo</option>
+                                <option *ngFor="let d of dataD" [value]="d">{{d}}
+                                </option>
+                            </select>
+                            <div *ngIf="f.district.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.district.errors.required">
+                                    District is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label class="w-100">
+                            Localidade:<span class="required">*</span>
+                            <input type="text" formControlName="location" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.location.errors}">
+                            <div *ngIf="f.location.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.location.errors.required">
+                                    Location is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class=" form-group col-sm-6">
+                        <label class="w-100">
+                            Morada:<span class="required">*</span>
+                            <input type="text" formControlName="address" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.address.errors}">
+                            <div *ngIf="f.address.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.address.errors.required">
+                                    Address is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" form-group col-sm-4">
+                        <label class="w-100">
+                            Habilitações Literárias:<span class="required">*</span>
+                            <select formControlName="academicQualifications" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.academicQualifications.errors}">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="Ensino Secundário">Ensino Secundário</option>
+                                <option value="Curso tecnológico/profissional/outro">Curso
+                                    tecnológico/profissional/outro
+                                </option>
+                                <option value="Bacharelato">Bacharelato</option>
+                                <option value="Licenciatura">Licenciatura</option>
+                                <option value="Pós-graduação">Pós-graduação</option>
+                                <option value="Mestrado">Mestrado</option>
+                                <option value="Doutoramento">Doutoramento</option>
+                            </select>
+                            <div *ngIf="f.academicQualifications.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.academicQualifications.errors.required">
+                                    Select an Academic Qualification, it is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class=" form-group col-sm-4">
+                        <label class="w-100">
+                            Instituto:<span class="required">*</span>
+                            <input type="text" formControlName="academicInstitution" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.academicInstitution.errors}">
+                            <div *ngIf="f.academicInstitution.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.academicInstitution.errors.required">
+                                    Select an Academic Institution, it is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class=" form-group col-sm-4">
+                        <label class="w-100">
+                            Curso:<span class="required">*</span>
+                            <input type="text" formControlName="course" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.course.errors}">
+                            <div *ngIf="f.course.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.course.errors.required">
+                                    Select an Academic Course, it is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" form-group col-sm-6">
+                        <label class="w-100">
+                            CC/Passaporte:<span class="required">*</span>
+                            <input type="text" formControlName="cc" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.cc.errors}" maxlength="22">
+                            <div *ngIf="f.cc.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.cc.errors.required">
+                                    CC or Passaport is required.
+                                </div>
+                                <div *ngIf="f.cc.errors.maxlength">
+                                    CC/Passaporte deve ter no máximo 22 caracteres.
+                                </div>
+                            </div>
+                        </label>
+
+                    </div>
+                    <div class=" form-group col-sm-6">
+                        <label class="w-100">
+                            Validade CC/Passaporte:<span class="required">*</span>
+                            <input type="date" formControlName="ccValidity" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.ccValidity.errors}"
+                                value="{{employeeccValidity | date:'yyyy-MM-dd'}}" (change)="fixccValiditydate($event)">
+                            <div *ngIf="f.ccValidity.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.ccValidity.errors.required">
+                                    CC or Passaport validity date is required.
+                                </div>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" form-group col-sm-6">
+                        <label class="w-100">
+                            Estado Civil:<span class="required">*</span>
+                            <select type="text" formControlName="maritalStatus" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.maritalStatus.errors}"
+                                (change)="changeMaritalStatus($event)">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="married">Casado(a)</option>
+                                <option value="divorced">Divorciado(a)</option>
+                                <option value="single">Solteiro(a)</option>
+                                <option value="separated">Separado(a)</option>
+                                <option value="widower">Viúvo(a)</option>
+                            </select>
+                            <div *ngIf="f.maritalStatus.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.maritalStatus.errors.required">
+                                    Marital Status is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-3 form-group" *ngIf="employeesForm.value.maritalStatus === 'married'">
+                        <label class="w-100">
+                            Conjuge trabalha?
+                            <select type="text" formControlName="maritalWorkStatus">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="true">Sim</option>
+                                <option value="false">Nāo</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" form-group col-sm-4">
+                        <label class="w-100">
+                            Dependentes:<span class="required">*</span>
+                            <select type="text" formControlName="dependents" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.dependents.errors}"
+                                (change)="haveDependents($event)">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="true">Sim</option>
+                                <option value="false">Nāo</option>
+                            </select>
+                            <div *ngIf="f.dependents.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.dependents.errors.required">
+                                    Dependentes is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class=" form-group col-sm-3"
+                        *ngIf="employeesForm.value.dependents === 'true'||employeesForm.value.dependents === true">
+                        <label class="w-100"> Número De Dependentes
+                            <select type="text" (change)="dependentsEvent($event)" formControlName="dependentsNumber"
+                                class="form-control">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-group col-sm-5"
+                        *ngIf="employeesForm.value.dependentsNumber > 0 && (employeesForm.value.dependents === 'true'||employeesForm.value.dependents === true)">
+                        <label class="w-100" style="display: inline-grid">
+                            Idades:
+                            <div class="row">
+                                <div style="display:inline-block; width: 25%;padding-right: 10px;"
+                                    *ngFor="let dependent of t.controls; let i = index;">
+                                    <span>
+                                        <input type="number" [formControl]="dependent" placeholder="Idade"
+                                            class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class=" form-group col-sm-6">
+                        <label class="w-100">
+                            NIF:<span class="required">*</span>
+                            <input type="text" formControlName="nif" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.nif.errors}" minlength="9" maxlength="9">
+                            <div *ngIf="f.nif.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.nif.errors.required">
+                                    NIF is required.
+                                </div>
+                                <div *ngIf="f.nif.errors.maxlength">
+                                    NIF must be exactly 9 characters long.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class=" form-group col-sm-6">
+                        <label class="w-100">
+                            NISS:<span class="required">*</span>
+                            <input type="number" formControlName="niss" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.niss.errors}" minlength="11">
+                            <div *ngIf="f.niss.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.niss.errors.required">
+                                    NISS is required.
+                                </div>
+                                <div *ngIf="f.niss.errors.maxlength">
+                                    NISS must be exactly 11 characters long.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" form-group col-sm-6">
+                        <label class="w-100">
+                            IBAN:<span class="required">*</span>
+                            <input type="number" formControlName="iban" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.iban.errors}">
+                            <div *ngIf="f.iban.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.iban.errors.required">
+                                    IBAN is required.
+                                </div>
+                            </div>
+                        </label>
+
+                    </div>
+                    <div class=" form-group col-sm-6">
+                        <label class="w-100">
+                            SWIFT:<span class="required">*</span>
+                            <input type="number" formControlName="swift" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.swift.errors}">
+                            <div *ngIf="f.swift.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.swift.errors.required">
+                                    SWIFT is required.
+                                </div>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center ">
+                    <label (click)="state = 'contract'" style="cursor: pointer">
+                        Next Page
+                        <fa-icon [icon]="iconArrowRight" style="color:rgb(211, 109, 13)"></fa-icon>
+                    </label>
+                </div>
+            </div>
+
+            <div *ngIf="state ==='contract'">
+                <div class="row">
+                    <div class=" form-group col-sm-4">
+                        <label>
+                            Tipo de Contrato:<span class="required">*</span>
+                            <select type="text" formControlName="contractType" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.contractType.errors}">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="Contrato de trabalho a termo certo">Contrato de trabalho a termo certo
+                                </option>
+                                <option value="Contrato de trabalho a termo incerto">Contrato de trabalho a termo
+                                    incerto
+                                </option>
+                                <option value="Contrato sem termo">Contrato sem termo</option>
+                                <option value="Prestaçāo de serviços">Prestaçāo de serviços</option>
+                            </select>
+                            <div *ngIf="f.contractType.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.contractType.errors.required">
+                                    Contract type is required.
+                                </div>
+                            </div>
+                        </label>
+
+                    </div>
+                    <div class=" form-group col-sm-4">
+                        <label>
+                            Data de Admissao:<span class="required">*</span>
+                            <input type="date" formControlName="admissionDate" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.admissionDate.errors}"
+                                value="{{employeeAdmissionDate | date:'yyyy-MM-dd'}}"
+                                (change)="fixAdmissionDatedate($event)">
+                            <div *ngIf="f.admissionDate.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.admissionDate.errors.required">
+                                    Admission date is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class=" form-group col-sm-4">
+                        <label>
+                            Salario Bruto:<span class="required">*</span>
+                            <input type="number" formControlName="grossSalary" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.grossSalary.errors}">
+                            <div *ngIf="f.grossSalary.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.grossSalary.errors.required">
+                                    Gross salary is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" form-group col-sm-4">
+                        <label class="w-100">
+                            Categoria Profissional:<span class="required">*</span>
+                            <select formControlName="professionalCategory" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.professionalCategory.errors}">
+                                <option value="">Escolha uma opçāo</option>
+                                <option *ngFor="let p of dataP" [value]="p">{{p}}
+                                </option>
+                            </select>
+                            <div *ngIf="f.professionalCategory.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.professionalCategory.errors.required">
+                                    Select your specialTech, it is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class=" form-group col-sm-4">
+                        <label class="w-100">
+                            Main Tech:<span class="required">*</span>
+                            <select formControlName="specialTech" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.specialTech.errors}">
+                                <option value="">Escolha uma opçāo</option>
+                                <option *ngFor="let t of dataT" [value]="t">{{t}}
+                                </option>
+                            </select>
+                        </label>
+                        <div *ngIf="f.specialTech.errors && clickSubmit" class="invalid-feedback">
+                            <div *ngIf="f.specialTech.errors.required">
+                                Select your specialTech, it is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" form-group col-sm-4">
+                        Other Tech:
+                        <ng-select [options]="dataTOptions" [multiple]="true" [ngModel]="selectedOtherTechs"
+                            [ngModelOptions]="{standalone: true}" (selected)="onSelectedOtherTech($event)"
+                            (deselected)="onDeselectedOtherTech($event)" class="form-control">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <label class="w-100">
+                            Horario de trabalho:<span class="required">*</span>
+                            <select type="text" formControlName="workSchedule" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.workSchedule.errors}">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="9h-18h">9h-18h</option>
+                            </select>
+                            <div *ngIf="f.workSchedule.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.workSchedule.errors.required">
+                                    WorkSchedule type is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label class="w-100">
+                            Duodecimos:<span class="required">*</span>
+                            <select type="text" formControlName="twelfths" (change)="twelfths($event)"
+                                class="form-control" [ngClass]="{'is-invalid': clickSubmit && f.twelfths.errors}">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="true">Sim</option>
+                                <option value="false">Nāo</option>
+                            </select>
+                            <div *ngIf="f.twelfths.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.twelfths.errors.required">
+                                    Twelfths Status is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-4"
+                        *ngIf="employeesForm.value.twelfths === 'true'|| employeesForm.value.twelfths === true">
+                        <label class="w-100">
+                            Tipo de Duodecimos?
+                            <select type="text" formControlName="twelfthsType">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="twelfths5050">Duodécimos 50/50</option>
+                                <option value="twelfths112">Duodécimos 1/12</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" form-group col-sm-4">
+                        <!--  <label formArrayName="otherTech" class="w-100">-->
+                        Campos de Remuneração
+                        <ng-select [options]="dataROptions" [multiple]="true" [ngModel]="selectedBonus"
+                            [ngModelOptions]="{standalone: true}" (selected)="onSelectedBonus($event)"
+                            (deselected)="onDeselectedBonus($event)" class="form-control">
+                        </ng-select>
+                    </div>
+                    <div class=" form-group col-sm-4">
+                        <label class="w-100">
+                            Tem Seguro de saude?<span class="required">*</span>
+                            <select type="text" formControlName="healthInsurance" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.healthInsurance.errors}"
+                                (change)="healthInsurance($event)">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="true">Sim</option>
+                                <option value="false">Nāo</option>
+                            </select>
+                            <div *ngIf="f.healthInsurance.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.healthInsurance.errors.required">
+                                    Select if you have healthInsurance, it is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="col-sm-4 form-group"
+                        *ngIf="employeesForm.value.healthInsurance === 'true'|| employeesForm.value.healthInsurance === true">
+                        <label class="w-100"> Financiado pela Aubay?
+                            <select type="text" (change)="companyFinancing($event)" formControlName="companyFinancing"
+                                class="form-control">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="true">Sim</option>
+                                <option value="false">Nāo</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group"
+                        *ngIf="employeesForm.value.companyFinancing === 'true'||employeesForm.value.companyFinancing === true && employeesForm.value.healthInsurance === 'true'|| employeesForm.value.healthInsurance === true">
+                        <label class="w-100"> Extensivel?
+                            <select type="text" (change)="extensible($event)" formControlName="extensible"
+                                class="form-control">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="true">Sim</option>
+                                <option value="false">Nāo</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-4 form-group"
+                        *ngIf="(employeesForm.value.extensible === 'true'||employeesForm.value.extensible === true) && (employeesForm.value.healthInsurance === 'true'|| employeesForm.value.healthInsurance === true)">
+                        <label class="w-100">
+                            Familiares Abrangidos
+                            <select type="text" (change)="extensibleNumber($event)" class="form-control"
+                                [ngModel]="extensibleN" [ngModelOptions]="{standalone: true}">
+                                <option value="0">Escolha uma opçāo</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div
+                    *ngIf="extensibleN > 0 && (employeesForm.value.extensible === 'true'||employeesForm.value.extensible === true)">
+                    <div class="row" *ngFor="let insuranceRelative of z.controls; let i = index;"
+                        [formGroup]="insuranceRelative">
+
+                        <div class="col-sm-7 form-group">
+                            <label class="w-100">
+                                Nome do familiar
+                                <input type="text" formControlName="insuranceRelativeName" placeholder="Nome"
+                                    class="form-control">
+                            </label>
+
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label class="w-100">
+                                Data de Nascimento
+                                <input type="date" formControlName="insuranceRelativeBirthDate" placeholder="Data"
+                                    class="form-control">
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center ">
+                    <label (click)="state = 'init'" style="margin-right: 60px; cursor: pointer;">
+                        <fa-icon [icon]="iconArrowLeft" style="color:rgb(211, 109, 13) "></fa-icon>
+                        Previous Page
+                    </label>
+                    <label (click)="state = 'client'" style="cursor: pointer">
+                        Next Page
+                        <fa-icon [icon]="iconArrowRight" style="color:rgb(211, 109, 13)"></fa-icon>
+                    </label>
+                </div>
+
+            </div>
+
+            <div *ngIf="state ==='client'">
+
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label class="w-100">
+                            Cliente:
+                            <input type="text" formControlName="client" class="form-control">
+                        </label>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label class="w-100">
+                            Setor:
+                            <!--      Talvez fazer selector -->
+                            <input type="text" formControlName="clientSector" class="form-control">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label class="w-100">
+                            Projeto:
+                            <input type="text" formControlName="project" class="form-control">
+                        </label>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="w-100">
+                            Tarifa:
+                            <input type="text" formControlName="fare" class="form-control">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label class="w-100">
+                            Observacoes:
+                            <input type="text" formControlName="commentarySection" style="height: 100px"
+                                class="form-control">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center ">
+                    <label (click)="state = 'contract'" style="margin-right: 60px; cursor: pointer;">
+                        <fa-icon [icon]="iconArrowLeft" style="color:rgb(211, 109, 13) "></fa-icon>
+                        Previous Page
+                    </label>
+                    <label (click)="state = 'lifestyle'" style=" cursor: pointer;">
+                        Next Page
+                        <fa-icon [icon]="iconArrowRight" style="color:rgb(211, 109, 13)"></fa-icon>
+                    </label>
+                </div>
+
+            </div>
+            <div *ngIf="state ==='lifestyle'">
+
+                <div class="row">
+                    <div class="form-group col-sm-3">
+                        <label class="w-100">
+                            Praticas Desporto?
+                            <select type="text" formControlName="sports" (change)="sports($event)" class="form-control"
+                                [ngClass]="{'is-invalid': clickSubmit && f.sports.errors}">
+                                <option value="">Escolha uma opçāo</option>
+                                <option value="true">Sim</option>
+                                <option value="false">Nāo</option>
+                            </select>
+                            <div *ngIf="f.sports.errors && clickSubmit" class="invalid-feedback">
+                                <div *ngIf="f.sports.errors.required">
+                                    Sports Status is required.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-9 form-group"
+                        *ngIf="employeesForm.value.sports === 'true'||employeesForm.value.sports === true">
+                        <label class="w-100">
+                            Que desportos praticas?
+                            <input type="text" formControlName="sportsType" class="form-control">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label class="w-100">
+                            Que outras atividades praticas regularmente?
+                            <input type="text" formControlName="otherActivities" style="height: 100px"
+                                class="form-control">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label class="w-100">
+                            Que atividades gostarias que a Aubay te oferecesse?
+                            <input type="text" formControlName="suggestedActivities" style="height: 100px"
+                                class="form-control">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label class="w-100">
+                            Quais são os teus Passatempos?
+                            <input type="text" formControlName="hobbies" style="height: 100px" class="form-control">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label class="w-100">
+                            Outras áreas de interesse:?
+                            <input type="text" formControlName="otherInterests" style="height: 100px"
+                                class="form-control">
+                        </label>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <label (click)="state = 'client'" style=" margin-right: 60px; cursor: pointer;">
+                        <fa-icon [icon]="iconArrowLeft" style="color:rgb(211, 109, 13) "></fa-icon>
+                        Previous Page
+                    </label>
+
+                </div>
+                <button *ngIf="isVisibleSubmit" id="submitbtn" (click)="triggerEvent()">Submeter</button>
+                <button *ngIf="isVisibleEdit" id="submitbtn" (click)="editEvent()">Editar</button>
+            </div>
+
+        </form>
+    </div>
+</div>

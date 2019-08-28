@@ -1,0 +1,10 @@
+<div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action bg-light" [routerLinkActive]="['active']" style="margin-top: 15px; padding-top: 30px; padding-bottom: 30px;"
+            routerLink="/colaboradores">Gerir Colaboradores</a>
+        <a class="list-group-item list-group-item-action bg-light " [hidden]="isOwner()" [routerLinkActive]="['active']" style="padding-top: 30px; padding-bottom: 30px;"
+            routerLink="/administradores">Gerir Administradores</a>
+        <a class="list-group-item list-group-item-action bg-light" [routerLinkActive]="['active']" style="padding-top: 30px; padding-bottom: 30px;"
+        routerLink="/estatisticas">Estatisticas</a>
+    </div>
+</div>

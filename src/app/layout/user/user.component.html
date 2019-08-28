@@ -1,0 +1,48 @@
+<div class="dash">
+  <div class="row">
+    <div class="col-sm-1" style="max-width:7.333333%;">
+      <button type="button" class="btn" (click)="openCreateModal()">
+        <fa-icon [icon]="iconNew"></fa-icon>
+      </button>
+    </div>
+    <div class="col-sm-1">
+      <button type="button" class="btn" (click)="getAllUsers()">
+        <fa-icon [icon]="iconRefresh"></fa-icon>
+      </button>
+    </div>
+    <div class="col-sm-10">
+      <input type="text" style="width:30%" placeholder="Filtrar por nome" (keyup)="updateFilter($event)"
+        class="form-control">
+    </div>
+  </div>
+
+
+  <div>
+    <ngx-datatable #table class="material" style="margin-top: 18px" [columns]="columns" [columnMode]="'force'"
+      [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [rows]="rows" [limit]="10"
+      [sorts]="[{prop: 'username', dir: 'desc'}]" [selected]="selected" [selectionType]="'checkbox'"
+      (select)='onSelect($event)'>
+      <ngx-datatable-column name="" [width]="30" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+        [resizeable]="false" [headerCheckboxable]="true" [checkboxable]="true">
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Username">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{row.username}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Role">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{row.role}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column>
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div *ngIf= "row.id > 1 ">
+            <fa-icon [icon]="iconTrash" style="color:rgb(201, 31, 31);cursor: pointer;" (click)="openDeleteModal(row.id)" title="Apagar Administrador"></fa-icon>
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+
+    </ngx-datatable>
+  </div>
+</div>

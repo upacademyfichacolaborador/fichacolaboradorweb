@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+@import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
+
+html, 
+body {
+    height: 100%;
+    background-image: url("https://wallpaperplay.com/walls/full/0/9/9/38917.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}

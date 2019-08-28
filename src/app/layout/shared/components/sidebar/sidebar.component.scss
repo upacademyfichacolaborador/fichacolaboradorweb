@@ -1,0 +1,29 @@
+
+
+#sidebar-wrapper {
+    margin-top: 76px;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+  }
+  
+  #sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+  }
+  
+  #sidebar-wrapper .list-group {
+    width: 15rem;
+  }
+
+  .list-group-item.active {
+    z-index: 2;
+    color: rgb(3, 3, 3);
+    border-color: orange;
+}
+

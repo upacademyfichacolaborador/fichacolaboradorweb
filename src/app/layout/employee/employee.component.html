@@ -1,0 +1,127 @@
+<div class="dash">
+  <button type="button" class="btn " (click)="openInviteModal()" title="Convidar Colaborador">
+    <i class="fas fa-envelope-square"></i>
+  </button>
+
+  <button type="button" class="btn " (click)="getAllEmployees()" title="Refresh">
+    <fa-icon [icon]="iconRefresh"></fa-icon>
+  </button>
+
+  <button type="button" class="btn " (click)="openInviteForm()" title="Preencher ficha localmente">
+    <fa-icon [icon]="iconNew"></fa-icon>
+  </button>
+
+  <button type="button" class="btn " (click)="exportAsXLSX()" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false"
+    title="Exportar para Excel">
+    <fa-icon [icon]="iconExcelExport"></fa-icon>
+  </button>
+
+    <button type="button" class="btn " title="Exportar para PDF" *ngIf="this.isBtnVisible" (click)="this.isBtnVisible = false">
+      <i class="fas fa-file-pdf"></i>
+    </button>
+   
+
+    
+
+    <div class="container" id="filter" style="box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); padding: 18px; margin-top: 18px">
+      <label for="" style="padding-top:6px; padding-bottom: 6px; padding-left: 10px;"><b>Filtros</b></label>
+      <div class="row">
+        <div class="col-sm-2">
+          <select data-filter="district" [(ngModel)]="district" class="form-control">
+            <option value="">Distrito</option>
+            <option *ngFor="let d of dataD" [value]="d">{{d}}
+            </option>
+          </select>
+
+        </div>
+        <div class="col-sm-2">
+          <select data-filter="specialTech" [(ngModel)]="specialTech" class="form-control">
+            <option value="" > Main Tech</option>
+            <option *ngFor="let t of dataT" [value]="t">{{t}}
+            </option>
+          </select>
+        </div>
+        <div class="col-sm-3">
+          <select data-filter="professionalCategory" [(ngModel)]="professionalCategory" class="form-control">
+            <option value="" >Categoria Profissional</option>
+            <option *ngFor="let p of dataP" [value]="p">{{p}}
+            </option>
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <select data-filter="client" [(ngModel)]="client" class="form-control">
+            <option value="" >Cliente</option>
+            <option *ngFor="let cl of dataCl" [value]="cl">{{cl}}
+            </option>
+          </select>
+        </div>
+        <div class="col-sm-3 form-group">
+          <input type="text" [(ngModel)]="date" placeholder="dd/mm/yyyy - dd/mm/yyyy" style="width: 100%; text-align: center"
+            class="form-control" bsDaterangepicker [bsConfig]="{ rangeInputFormat: 'DD/MM/YYYY', containerClass: 'theme-red', showWeekNumbers: true}">
+        </div>
+
+      </div>
+      <div class="row rowcss">
+        <div class="col-sm-9">
+          <input type="text" placeholder="Filtrar por nome" (keyup)="updateFilter($event)" class="form-control" />
+        </div>
+        <div class="col-sm-3">
+          <button type="button" class="btn" (click)="filterSearch()" style="background-color: orange; width: 220px">Pesquisar</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <ngx-datatable #table class="material" [columns]="columns" [columnMode]="'standard'" [headerHeight]="50"
+        [footerHeight]="50" [rowHeight]="'auto'" [rows]="rows" [limit]="10" [sorts]="[{prop: 'name', dir: 'desc'}]"
+        [sorts]="[{prop: 'client', dir: 'desc'}]" [selected]="selected" [selectionType]="'checkbox'" (select)='onSelect($event)'>
+        <ngx-datatable-column name="" client=""  [sortable]="false" [canAutoResize]="false" [draggable]="false"
+          [resizeable]="false" [draggable]="false" [headerCheckboxable]="true" [checkboxable]="true">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Name" [width]="150">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.name}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Admission Date"[width]="110">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.admissionDate |date:'dd/MM/yyyy'}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Email" [width]="150">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.email}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Professional Category" [width]="170">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.professionalCategory}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Special Tech" [width]="100">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.specialTech}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Cliente" [width]="100">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.client}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [width]="25">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <fa-icon [icon]="iconEdit" style="color:rgb(211, 109, 13);cursor: pointer;" (click)="editEmployeeById(row.id)" title="Editar Colaborador"></fa-icon>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [width]="25">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <fa-icon [icon]="iconTrash" style="color:rgb(201, 31, 31);cursor: pointer;" (click)="openDeleteModal(row.id)" title="Apagar Colaborador"></fa-icon>
+          </ng-template>
+        </ngx-datatable-column>
+
+
+
+
+      </ngx-datatable>
+    </div>
+</div>

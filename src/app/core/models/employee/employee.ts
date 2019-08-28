@@ -1,0 +1,55 @@
+export class Employee {
+    'id'?: number;
+    'name': String;
+    'address': String;
+    'postalCode': String;
+    'district': String;
+    'location': String;
+    'email': String;
+    'phoneNumber': String;
+    'academicQualifications': String;
+    'academicInstitution': String;
+    'course': String;
+    'cc': Number;
+    'ccValidity': Date;
+    'nationality': String;
+    'birthDate': Date;
+    'nif': String;
+    'niss': String;
+    'maritalStatus': String;
+    'maritalWorkStatus': Boolean;
+    'dependents': Boolean;
+    'dependentsNumber': Number;
+    'dependentsAges': Number[];
+    'iban': String;
+    'swift': String;
+    'professionalCategory': String
+    'specialTech': String;
+    'otherTech': Array<string>;
+    'admissionDate': Date;
+    'grossSalary': Number;
+    'contractType': String;
+    'bonus': Array<string>;
+    'twelfths': Boolean;
+    'twelfthsType': String;
+    'workSchedule': String;
+    'sports': Boolean;
+    'sportsType': String;
+    'otherActivities': String;
+    'suggestedActivities': String;
+    'hobbies': String;
+    'otherInterests': String;
+    'client': String;
+    'clientSector': String;
+    'project': String;
+    'fare': String;
+    'healthInsurance': Boolean;
+    'companyFinancing': Boolean;
+    'extensible': Boolean;
+    'insuranceDetails': Object[];
+    'companyFinancingRelative': Number;
+    'commentarySection': String;
+    constructor(data?: any) {
+        Object.assign(this, data);
+    }
+}

@@ -1,0 +1,69 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;}
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 8px;
+  margin-bottom: 8px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+button {
+  width: 50%;
+  background-color:rgb(241, 100, 6);
+  color: white;
+  padding: 14px 20px;
+  margin-top: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.imgProperties {
+  padding-left: 25px;
+  padding-top: 15px;
+  width: 12%;
+}
+
+
+.loginForm{
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  padding:20px;
+  border-spacing: 50px;
+  border: 1px solid #ccc;
+  width: 30%;
+  margin: auto;
+  background-color: whitesmoke;
+  border-radius: 15px;
+
+}
+
+.loginFooter{
+  padding-top: 2%;
+  width: 100%;
+  margin-left: auto ;
+  margin-right: auto ;
+  color: white; 
+  text-align: center;
+}
+.logoAndName{
+  margin-left: auto ;
+  margin-right: auto ;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  padding-bottom: 2%;
+  padding-top: 5%;
+}
+h4 {
+  text-align: center;
+}
+.gola{
+  background-image: linear-gradient(to bottom left,  #e20419, #f8b627);
+}
