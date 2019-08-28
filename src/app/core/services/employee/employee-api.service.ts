@@ -41,7 +41,7 @@ export class EmployeeApiService {
     return this.http.put(this._apiUrl, employee);
   }
 
-  public filter(filters) {
+  public filter(filters){
     console.log(filters);
     return this.http.post(this._apiUrl3, filters);
   }
